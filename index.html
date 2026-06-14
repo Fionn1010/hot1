@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hill of Tara · Tour Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+:root{
+  --bg:#f7f3ea;
+  --card:#fffdf8;
+  --gold:#b68218;
+  --gold2:#d8a338;
+  --line:#e3d8c3;
+  --text:#1d1b16;
+  --muted:#756c5d;
+  --danger:#9f2f24;
+  --ok:#2c6f3d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#fbf7ef 0%,var(--bg) 60%,#efe7d7 100%);
+  font-family:Inter,system-ui,sans-serif;
+  color:var(--text);
+  font-size:18px;
+  line-height:1.55;
+}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif}
+.hero{
+  min-height:44svh;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.78)),
+    url("./images/hero.jpg") center/cover no-repeat,
+    radial-gradient(circle,#5b482d,#15120d 70%);
+  display:grid;
+  place-items:end center;
+  padding:30px 20px;
+  color:#fff;
+  text-align:center;
+}
+.hero h1{
+  font-size:clamp(54px,13vw,92px);
+  margin:0;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  line-height:.9;
+}
+.hero p{
+  color:#f1c86e;
+  font-size:clamp(20px,4.8vw,34px);
+  margin:12px 0 0;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+main{max-width:900px;margin:auto;padding:20px 16px 90px}
+.card{
+  background:rgba(255,253,248,.97);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  margin:18px 0;
+  box-shadow:0 10px 34px rgba(40,30,12,.1);
+}
+.eyebrow{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:6px;
+}
+.stop-title{
+  font-size:clamp(40px,9vw,62px);
+  line-height:1;
+  margin:0 0 8px;
+}
+.subtitle{color:var(--muted);font-size:20px;margin:0 0 16px}
+.copy{font-size:21px;line-height:1.55;margin:18px 0}
+.video-wrap{
+  border-radius:22px;
+  overflow:hidden;
+  background:#ded0b8;
+  border:1px solid var(--line);
+}
+video{
+  width:100%;
+  display:block;
+  aspect-ratio:16/9;
+  background:#1a1712;
+}
+.missing{
+  min-height:240px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:22px;
+  color:#6d5831;
+  background:linear-gradient(135deg,#f2e7d3,#d9c49d);
+  font-weight:800;
+}
+.btn{
+  border:0;
+  border-radius:18px;
+  padding:18px 20px;
+  min-height:68px;
+  width:100%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-decoration:none;
+  cursor:pointer;
+  font-weight:850;
+  background:linear-gradient(180deg,var(--gold2),#b47c13);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(140,91,10,.22);
+  font-size:22px;
+}
+.btn.light{
+  background:#fffaf0;
+  color:#241c10;
+  border:1px solid var(--line);
+  box-shadow:none;
+}
+.btn.danger{
+  background:#fff2ec;
+  color:#882b21;
+  border:1px solid #eac7bc;
+  box-shadow:none;
+}
+.start-btn{
+  margin-top:16px;
+  min-height:86px;
+  font-size:clamp(28px,6vw,42px);
+  border-radius:24px;
+}
+.start-btn span{display:block}
+.start-btn small{
+  display:block;
+  font-size:15px;
+  font-weight:700;
+  opacity:.95;
+  margin-top:3px;
+}
+.actions{display:grid;gap:12px}
+@media(min-width:650px){.actions.two{grid-template-columns:1fr 1fr}}
+.reveal{
+  display:none;
+  margin-top:16px;
+  padding:16px;
+  border-radius:18px;
+  border:1px solid #e4cf9d;
+  background:#fff6df;
+}
+.reveal.show{display:block}
+model-viewer{
+  width:100%;
+  height:390px;
+  display:block;
+  background:radial-gradient(circle at 50% 30%,#f2e6cf,#d4bd91);
+  border-radius:20px;
+}
+.viewer-shell{
+  margin-top:12px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:10px;
+  background:#fff8ea;
+}
+.ar-main-btn{
+  margin-top:18px;
+  min-height:78px;
+  font-size:clamp(25px,5vw,36px);
+  border-radius:22px;
+}
+.model-fallback{
+  min-height:320px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:24px;
+  border:1px dashed #c7aa77;
+  border-radius:18px;
+  background:#fff6e4;
+  color:#76562a;
+  font-size:18px;
+}
+.next-card{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+.next-title{font-size:38px;line-height:1;margin:0}
+.dev{
+  background:#f2ede2;
+}
+.dev summary{
+  cursor:pointer;
+  font-weight:900;
+  font-size:22px;
+}
+.dev-grid{
+  display:grid;
+  gap:12px;
+  margin-top:16px;
+}
+.audio-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:center;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fffaf0;
+  padding:12px;
+}
+.audio-row small{color:var(--muted)}
+.mini{
+  border:0;
+  border-radius:12px;
+  padding:11px 14px;
+  background:#201b14;
+  color:#fff;
+  font-weight:800;
+}
+.diag{
+  font-size:14px;
+  display:grid;
+  gap:7px;
+  margin-top:14px;
+}
+.diag-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:8px 10px;
+  background:#fffaf0;
+}
+.ok{color:var(--ok);font-weight:900}
+.bad{color:var(--danger);font-weight:900}
+.bottom-nav{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  background:rgba(255,250,240,.95);
+  backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.bottom-nav .btn{min-height:52px;font-size:15px;border-radius:14px;padding:10px}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div>
+    <h1>Hill of Tara</h1>
+    <p>Seat of the High Kings</p>
+  </div>
+</section>
+
+<main>
+  <section class="card" id="stopCard">
+    <div class="eyebrow">Current Stop</div>
+    <h2 class="stop-title" id="stopTitle">Loading…</h2>
+    <p class="subtitle" id="stopSubtitle"></p>
+
+    <div class="video-wrap" id="videoBox"></div>
+
+    <button class="btn start-btn" id="startBtn">
+      <span>👑 Start Experience</span>
+      <small>Play video, narration and sound together</small>
+    </button>
+
+    <div class="reveal" id="arReveal">
+      <strong>✨ Your story continues.</strong><br>
+      Now launch the AR scene and place the reconstruction into the landscape.
+      <a class="btn" href="#arCard" style="margin-top:12px">◇ Go to AR Scene</a>
+    </div>
+
+    <p class="copy" id="stopText"></p>
+  </section>
+
+  <section class="card" id="arCard">
+    <div class="eyebrow">Augmented Reality</div>
+    <h2 class="stop-title" style="font-size:42px">Explore in Augmented Reality</h2>
+    <p class="subtitle">Preview the 3D reconstruction below, then launch it into the landscape.</p>
+
+    <div class="viewer-shell">
+      <div id="modelBox"></div>
+    </div>
+
+    <button class="btn ar-main-btn" id="launchArBtn">
+      ◇ Launch AR Scene
+    </button>
+
+    <p class="subtitle" style="font-size:16px;margin-top:12px">
+      The 3D preview includes the native AR icon. If the large button does not work on your phone, tap the AR icon inside the viewer.
+    </p>
+  </section>
+
+  <section class="card next-card">
+    <div>
+      <div class="eyebrow">Next Stop</div>
+      <h3 class="next-title" id="nextTitle"></h3>
+      <p class="subtitle" id="nextGuide"></p>
+    </div>
+    <button class="btn" id="nextBtn">→ Continue to Next Stop</button>
+  </section>
+
+  <section class="card dev">
+    <details>
+      <summary>Developer Tools</summary>
+      <p class="subtitle">Testing controls are kept here so the visitor page stays clean.</p>
+
+      <div class="dev-grid">
+        <div class="audio-row">
+          <div><strong>Background soundscape</strong><br><small id="ambienceFile"></small></div>
+          <button class="mini" id="ambienceBtn">Play</button>
+        </div>
+        <div>
+          <label>Ambience volume</label>
+          <input id="ambienceVol" type="range" min="0" max="100" value="35" style="width:100%">
+        </div>
+
+        <div class="audio-row">
+          <div><strong>Narration</strong><br><small id="voiceFile"></small></div>
+          <button class="mini" id="voiceBtn">Play</button>
+        </div>
+        <div>
+          <label>Voice volume</label>
+          <input id="voiceVol" type="range" min="0" max="100" value="100" style="width:100%">
+        </div>
+
+        <button class="btn danger" id="stopAllBtn">■ Stop All Media</button>
+
+        <div class="diag" id="assetStatus"></div>
+      </div>
+    </details>
+  </section>
+</main>
+
+<nav class="bottom-nav">
+  <button class="btn light" id="prevBtn">← Previous</button>
+  <button class="btn" id="nextBtnBottom">Next →</button>
+</nav>
+
+<script>
+const STOPS=[
+{id:1,title:"The Entrance",subtitle:"Begin your journey",text:"Start at the entrance and turn into the sacred landscape. This is the threshold between the modern world and royal Tara.",model:"models/1entrance.glb",usdz:"models/1entrance.usdz",video:"videos/01_entrance.mp4",ambience:"sounds/01_entrance.mp3",voice:"sounds/01_entrance_voice.mp3",next:"The Banqueting Hall"},
+{id:2,title:"The Banqueting Hall",subtitle:"The ceremonial earth walkway",text:"Walk along the ceremonial earth banks where royal processions, gatherings and feasting traditions are remembered.",model:"models/2banquethall.glb",usdz:"models/2banquethall.usdz",video:"videos/02_banquet.mp4",ambience:"sounds/02_banquet.mp3",voice:"sounds/02_banquet_voice.mp3",next:"The Palisade"},
+{id:3,title:"The Palisade",subtitle:"The great timber enclosure",text:"Imagine the timber circle rising around the ritual landscape, marking a powerful boundary within royal Tara.",model:"models/3pallisade.glb",usdz:"models/3pallisade.usdz",video:"videos/03_pallisade.mp4",ambience:"sounds/03_pallisade.mp3",voice:"sounds/03_pallisade_voice.mp3",next:"Rath of the Synods"},
+{id:4,title:"Rath of the Synods",subtitle:"The heart of royal Tara",text:"Stand near the ritual enclosure and picture druids, nobles and warriors gathering around the High King.",model:"models/4rath.glb",usdz:"models/4rath.usdz",video:"videos/04_rath.mp4",ambience:"sounds/04_rath.mp3",voice:"sounds/04_rath_voice.mp3",next:"Mound of the Hostages"},
+{id:5,title:"Mound of the Hostages",subtitle:"A place of solemn ritual",text:"This ancient passage tomb connects the tour to ancestry, memory and the deep past beneath the Hill of Tara.",model:"models/5mound.glb",usdz:"models/5mound.usdz",video:"videos/05_mound.mp4",ambience:"sounds/05_mound.mp3",voice:"sounds/05_mound_voice.mp3",next:"Lia Fáil"},
+{id:6,title:"Lia Fáil",subtitle:"The Stone of Destiny",text:"Here the king is not simply chosen. He is revealed. The Stone of Destiny marks the moment of transformation.",model:"models/6stone.glb",usdz:"models/6stone.usdz",video:"videos/06_stone.mp4",ambience:"sounds/06_stone.mp3",voice:"sounds/06_stone_voice.mp3",next:"Teach Cormaic"},
+{id:7,title:"Teach Cormaic",subtitle:"Chock Cormuck",text:"The royal gathering continues at Teach Cormaic, where recognition, celebration and kingship come into focus.",model:"models/7cormaic.glb",usdz:"models/7cormaic.usdz",video:"videos/07_cormaic.mp4",ambience:"sounds/07_cormaic.mp3",voice:"sounds/07_cormaic_voice.mp3",next:"St Patrick & Church"},
+{id:8,title:"St Patrick & Church",subtitle:"The later Christian memory",text:"Finish near St Patrick’s statue and church, where the older royal landscape meets later Christian tradition.",model:"models/8patrick.glb",usdz:"models/8patrick.usdz",video:"videos/08_patrick.mp4",ambience:"sounds/08_patrick.mp3",voice:"sounds/08_patrick_voice.mp3",next:"Tour complete"}
+];
+
+// Update this list as files are added.
+const EXISTING=new Set([
+"models/2banquethall.glb","models/3pallisade.glb","models/4rath.glb","models/4rath.usdz","models/5mound.glb","models/6stone.glb","models/7cormaic.glb",
+"videos/01_entrance.mp4","videos/02_banquet.mp4","videos/04_rath.mp4","videos/05_mound.mp4","videos/06_stone.mp4","videos/07_cormaic.mp4",
+"sounds/02_banquet.mp3","sounds/02_banquet_voice.mp3","sounds/04_rath.mp3"
+]);
+
+let current=Math.max(0,Math.min(STOPS.length-1,Number(new URLSearchParams(location.search).get("stop")||1)-1));
+let ambienceAudio=new Audio();
+let voiceAudio=new Audio();
+
+function exists(p){return EXISTING.has(p)}
+function row(label,path){const ok=exists(path);return `<div class="diag-row"><span>${label}: <code>${path}</code></span><span class="${ok?'ok':'bad'}">${ok?'found':'missing'}</span></div>`}
+
+function stopAll(){
+  const v=document.getElementById("stopVideo");
+  if(v) v.pause();
+  ambienceAudio.pause(); voiceAudio.pause();
+}
+
+function loadAudio(){
+  const s=STOPS[current];
+  stopAll();
+  ambienceAudio=new Audio(s.ambience);
+  voiceAudio=new Audio(s.voice);
+  ambienceAudio.volume=Number(document.getElementById("ambienceVol").value)/100;
+  voiceAudio.volume=Number(document.getElementById("voiceVol").value)/100;
+}
+
+function render(){
+  const s=STOPS[current];
+  loadAudio();
+
+  document.getElementById("stopTitle").textContent=`${s.id}. ${s.title}`;
+  document.getElementById("stopSubtitle").textContent=s.subtitle;
+  document.getElementById("stopText").textContent=s.text;
+  document.getElementById("nextTitle").textContent=s.id===8?"Tour complete":STOPS[current+1].title;
+  document.getElementById("nextGuide").textContent=s.id===8?"You have reached the final stop.":"Continue when you are ready to move to the next part of the story.";
+  document.getElementById("ambienceFile").textContent=s.ambience;
+  document.getElementById("voiceFile").textContent=s.voice;
+  document.getElementById("arReveal").classList.remove("show");
+
+  document.getElementById("videoBox").innerHTML=exists(s.video)
+    ? `<video id="stopVideo" src="${s.video}" controls playsinline preload="metadata"></video>`
+    : `<div class="missing">Missing video<br><code>${s.video}</code></div>`;
+
+  document.getElementById("modelBox").innerHTML=exists(s.model)
+    ? `<model-viewer id="viewer" src="${s.model}" ${exists(s.usdz)?`ios-src="${s.usdz}"`:""} camera-controls touch-action="pan-y" auto-rotate ar ar-modes="scene-viewer quick-look webxr" shadow-intensity="1" exposure="1" alt="3D model for ${s.title}"></model-viewer>`
+    : `<div class="model-fallback">
+         <strong>3D model viewer</strong><br><br>
+         Missing model for this stop:<br>
+         <code>${s.model}</code><br><br>
+         Once this GLB is uploaded, the preview and AR launch button will work here.
+       </div>`;
+
+  document.getElementById("assetStatus").innerHTML =
+    row("GLB model",s.model)+row("iPhone USDZ",s.usdz)+row("Video",s.video)+row("Background sound",s.ambience)+row("Narration",s.voice);
+
+  document.getElementById("prevBtn").disabled=current===0;
+  document.getElementById("nextBtn").textContent=s.id===8?"Finish Tour":"→ Continue to Next Stop";
+  document.getElementById("nextBtnBottom").textContent=s.id===8?"Finish":"Next →";
+
+  attachVideoEvents();
+  history.replaceState(null,"",`?stop=${s.id}`);
+}
+
+async function startExperience(){
+  const s=STOPS[current];
+  const video=document.getElementById("stopVideo");
+  if(video){video.currentTime=0;}
+  if(exists(s.ambience)){ambienceAudio.currentTime=0; ambienceAudio.play().catch(()=>{});}
+  if(exists(s.voice)){voiceAudio.currentTime=0; voiceAudio.play().catch(()=>{});}
+  if(video){await video.play().catch(()=>{});}
+  if(!video && !exists(s.ambience) && !exists(s.voice)) alert("No media files found for this stop yet.");
+}
+
+function attachVideoEvents(){
+  const video=document.getElementById("stopVideo");
+  if(!video) return;
+  video.addEventListener("play",()=>{
+    const s=STOPS[current];
+    if(exists(s.ambience)){ambienceAudio.currentTime=video.currentTime; ambienceAudio.play().catch(()=>{});}
+    if(exists(s.voice)){voiceAudio.currentTime=video.currentTime; voiceAudio.play().catch(()=>{});}
+  });
+  video.addEventListener("pause",()=>{ambienceAudio.pause();voiceAudio.pause();});
+  video.addEventListener("seeking",()=>{
+    if(exists(STOPS[current].ambience)) ambienceAudio.currentTime=video.currentTime;
+    if(exists(STOPS[current].voice)) voiceAudio.currentTime=video.currentTime;
+  });
+  video.addEventListener("ended",()=>{
+    ambienceAudio.pause();voiceAudio.pause();
+    document.getElementById("arReveal").classList.add("show");
+    setTimeout(()=>document.getElementById("arCard").scrollIntoView({behavior:"smooth",block:"start"}),700);
+  });
+}
+
+async function launchAR(){
+  const s=STOPS[current];
+  if(!exists(s.model)){alert("Missing AR model: "+s.model);return;}
+  const viewer=document.getElementById("viewer");
+  if(viewer && viewer.activateAR){
+    try{await viewer.activateAR();}
+    catch(e){alert("Your phone blocked direct AR launch. Please tap the AR icon inside the 3D viewer.");}
+  }else alert("Direct AR launch is not available. Use the AR icon inside the 3D viewer.");
+}
+
+function nextStop(){ if(current<STOPS.length-1){current++; render(); document.getElementById("stopCard").scrollIntoView();} }
+function prevStop(){ if(current>0){current--; render(); document.getElementById("stopCard").scrollIntoView();} }
+
+document.getElementById("startBtn").onclick=startExperience;
+document.getElementById("launchArBtn").onclick=launchAR;
+document.getElementById("nextBtn").onclick=nextStop;
+document.getElementById("nextBtnBottom").onclick=nextStop;
+document.getElementById("prevBtn").onclick=prevStop;
+document.getElementById("stopAllBtn").onclick=stopAll;
+document.getElementById("ambienceBtn").onclick=()=>exists(STOPS[current].ambience)?(ambienceAudio.paused?ambienceAudio.play():ambienceAudio.pause()):alert("Missing file: "+STOPS[current].ambience);
+document.getElementById("voiceBtn").onclick=()=>exists(STOPS[current].voice)?(voiceAudio.paused?voiceAudio.play():voiceAudio.pause()):alert("Missing file: "+STOPS[current].voice);
+document.getElementById("ambienceVol").oninput=e=>ambienceAudio.volume=Number(e.target.value)/100;
+document.getElementById("voiceVol").oninput=e=>voiceAudio.volume=Number(e.target.value)/100;
+
+render();
+</script>
+</body>
+</html>
