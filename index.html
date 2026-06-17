@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hill of Tara</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffdf7;--gold:#c7962a;--gold2:#ddb04a;--line:#e7dcc7;--text:#171717;--muted:#655d52;--red:#7d1b22}
+*{box-sizing:border-box} body{margin:0;background:var(--cream);font-family:Inter,sans-serif;color:var(--text)}
+.hero{min-height:220px;background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.75)),radial-gradient(circle at 50% 20%,#343028,#080808);color:white;display:grid;place-items:center;text-align:center;padding:30px}
+.hero h1{font-family:Cinzel,serif;font-size:clamp(44px,11vw,80px);margin:0;text-transform:uppercase;letter-spacing:.08em}
+.hero p{margin:12px 0 0;color:#f0cb77;font-family:Cinzel,serif;letter-spacing:.15em}
+.video{width:100%;background:#111}.video video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#111}
+.panel{background:var(--paper);border-radius:0 0 28px 28px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.content{padding:22px;text-align:center}.stopnum{color:var(--gold);font-weight:900;letter-spacing:.18em;font-size:14px}.title{font-family:Cinzel,serif;font-size:clamp(36px,8vw,58px);margin:8px 0 6px;text-transform:uppercase}
+.subtitle{color:var(--muted);font-size:22px;margin:0}
+.begin{margin-top:18px;width:100%;min-height:86px;border:0;border-radius:22px;background:linear-gradient(180deg,#8d1e24,#6d151a);color:white;font-size:clamp(28px,6vw,40px);font-weight:900}
+.ar{margin:26px 18px;padding:28px;border-radius:28px;border:2px solid var(--gold);background:linear-gradient(180deg,#fffdf7,#fff7e6);box-shadow:0 14px 40px rgba(199,150,42,.18);text-align:center}
+.aricon{font-size:56px;color:var(--gold)} .artitle{font-family:Cinzel,serif;font-size:42px;margin:8px 0}.ar p{color:var(--muted);font-size:24px}
+.launch{width:100%;min-height:84px;border:0;border-radius:22px;background:linear-gradient(180deg,var(--gold2),#be8a1d);color:white;font-size:32px;font-weight:900;box-shadow:0 12px 28px rgba(199,150,42,.25)}
+.next{margin:26px 18px;text-align:center}.next h3{font-family:Cinzel,serif;font-size:36px;margin:0 0 10px}.next button{width:100%;min-height:72px;border:1px solid var(--line);border-radius:20px;background:white;font-size:28px;font-weight:900}
+.dev{margin:26px 18px;padding:18px;border:1px solid var(--line);border-radius:18px;background:#f1ebdf}.dev summary{font-size:22px;font-weight:900;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="hero"><div><div style="font-size:34px;color:#ddb04a">♛</div><h1>Hill of Tara</h1><p>SEAT OF THE HIGH KINGS</p></div></header>
+<section class="panel">
+<div class="video"><video controls playsinline></video></div>
+<div class="content">
+<div class="stopnum">STOP 1</div>
+<div class="title">THE ENTRANCE</div>
+<p class="subtitle">Begin your journey</p>
+<button class="begin">♛ BEGIN THIS STOP</button>
+</div>
+</section>
+<section class="ar">
+<div class="aricon">◇</div>
+<div class="artitle">VIEW IN AR</div>
+<p>Place ancient Tara into the landscape</p>
+<button class="launch">LAUNCH AR</button>
+</section>
+<section class="next">
+<h3>NEXT STOP</h3>
+<button>Continue →</button>
+</section>
+<section class="dev"><details><summary>Developer Tools</summary><p>Audio tests, diagnostics and asset checks go here.</p></details></section>
+</body></html>
