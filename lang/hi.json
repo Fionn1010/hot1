@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "language": "hi",
+  "locale": "hi-IN",
+  "languageName": "हिन्दी",
+  "englishName": "Hindi",
+  "direction": "ltr",
+  "ui": {
+    "name": "हिन्दी",
+    "locale": "hi",
+    "heroTagline": "आयरलैंड के उच्च राजाओं का आसन",
+    "language": "भाषा",
+    "gpsTitle": "GPS यात्रा",
+    "gpsSubtitle": "राजा के मार्ग का अनुसरण करें",
+    "destination": "गंतव्य:",
+    "enableGps": "GPS कम्पास चालू करें",
+    "gpsActive": "GPS कम्पास सक्रिय",
+    "jumpCurrent": "वर्तमान पड़ाव पर जाएँ",
+    "gpsNote": "बाहर उपयोग करना सर्वोत्तम है। पेड़ों या इमारतों के पास GPS 5–20 मीटर तक भटक सकता है।",
+    "stop": "पड़ाव",
+    "beginDefault": "♛ यह पड़ाव शुरू करें",
+    "beginHint": "कहानी शुरू करने के लिए सुनहरा बटन दबाएँ। वीडियो पूर्ण स्क्रीन में खुलेगा और फिर AR के लिए यहाँ लौटेगा।",
+    "storyDone": "✨ कहानी समाप्त हुई। अब AR दृश्य देखें। GPS मार्गदर्शक पृष्ठ के ऊपर है।",
+    "arLabel": "AR अनुभव",
+    "arTitle": "AR में देखें",
+    "arText": "प्राचीन तारा को वास्तविक परिदृश्य में रखें।",
+    "launchAr": "AR शुरू करें",
+    "arSoon": "AR जल्द आ रहा है",
+    "photoMain": "📸 फोटो सुझाव: AR खुलने पर कैमरा बटन दिखाने के लिए स्क्रीन पर टैप करें।",
+    "photoSmall": "समूह फोटो के लिए एक व्यक्ति फोन पकड़े और बाकी लोग दृश्य में खड़े हों।",
+    "nextStop": "अगला पड़ाव",
+    "continue": "आगे बढ़ें →",
+    "finishTour": "यात्रा समाप्त करें",
+    "finishButton": "यात्रा समाप्त करें",
+    "farewell": "विदाई और धन्यवाद संदेश चलाएँ",
+    "welcome": "तारा की पहाड़ी पर<br>आपका स्वागत है",
+    "gateIntro": "आयरलैंड के उच्च राजाओं का आसन। राजा का मार्ग प्रवेश द्वार से शुरू होता है।",
+    "startEntrance": "प्रवेश द्वार से शुरू करें",
+    "resume": "पिछला पड़ाव जारी रखें",
+    "jumpNearest": "मेरे वर्तमान स्थान पर जाएँ",
+    "gateNote": "पूरी कहानी के लिए प्रवेश द्वार से शुरू करें। यदि आप किसी अन्य पड़ाव पर हैं, तो GPS का उपयोग करें।",
+    "metres": "मीटर शेष",
+    "checking": "आपका स्थान जाँचा जा रहा है…",
+    "gpsUnavailable": "इस उपकरण पर GPS उपलब्ध नहीं है।",
+    "locationUnavailable": "स्थान उपलब्ध नहीं था। फिर भी आप प्रवेश द्वार से शुरू कर सकते हैं।",
+    "locationNeeded": "कम्पास के लिए स्थान की अनुमति आवश्यक है।",
+    "enableFirst": "निकटतम पड़ाव खोजने के लिए पहले GPS चालू करें।",
+    "storyComplete": "✓ कहानी पूरी हुई",
+    "pathContinues": "राजा का मार्ग जारी है",
+    "storyCompleteTitle": "कहानी पूरी हो गई",
+    "nextLabel": "अगला पड़ाव:",
+    "thanksWalk": "तारा की पहाड़ी की यात्रा के लिए धन्यवाद।",
+    "compassContinue": "जारी रखने के लिए ऊपर दिए कम्पास का उपयोग करें",
+    "toNext": "अगले पड़ाव तक",
+    "returnStart": "शुरुआत पर लौटें",
+    "discoverMeath": "मीथ की खोज करें",
+    "thanks": "धन्यवाद",
+    "stopVideo": "■ वीडियो रोकें"
+  },
+  "stops": [
+    {
+      "id": "entrance",
+      "number": 1,
+      "title": "प्रवेश द्वार",
+      "subtitle": "अपनी यात्रा शुरू करें",
+      "primaryAction": "♛ यात्रा शुरू करें",
+      "media": {
+        "video": "01_entrance.mp4",
+        "model": "1entrance.glb"
+      }
+    },
+    {
+      "id": "banqueting-hall",
+      "number": 2,
+      "title": "भोज कक्ष",
+      "subtitle": "अनुष्ठानिक मार्ग पर चलें",
+      "primaryAction": "राजकीय भोज में प्रवेश करें",
+      "media": {
+        "video": "02_banquet.mp4",
+        "model": "2banquethall.glb"
+      }
+    },
+    {
+      "id": "palisade",
+      "number": 3,
+      "title": "लकड़ी की परिधि",
+      "subtitle": "विशाल लकड़ी के घेरे में प्रवेश करें",
+      "primaryAction": "महान परिसर में प्रवेश करें",
+      "media": {
+        "video": "03_palisade.mp4",
+        "model": "3pallisade.glb"
+      }
+    },
+    {
+      "id": "rath-of-the-synods",
+      "number": 4,
+      "title": "राथ ऑफ द सिनॉड्स",
+      "subtitle": "जहाँ पवित्र और राजसी संसार मिलते हैं",
+      "primaryAction": "⚜ राज्याभिषेक देखें",
+      "media": {
+        "video": "04_rath.mp4",
+        "model": "4rath.glb"
+      }
+    },
+    {
+      "id": "mound-of-the-hostages",
+      "number": 5,
+      "title": "बंधकों का समाधि-टीला",
+      "subtitle": "प्राचीन समाधि की ओर बढ़ें",
+      "primaryAction": "प्राचीन समाधि खोजें",
+      "media": {
+        "video": "05_mound.mp4",
+        "model": "5mound.glb"
+      }
+    },
+    {
+      "id": "stone-of-destiny",
+      "number": 6,
+      "title": "भाग्य का पत्थर",
+      "subtitle": "राजा का चयन",
+      "primaryAction": "राजाओं के पत्थर को छुएँ",
+      "media": {
+        "video": "06_stone.mp4",
+        "model": "6stone.glb"
+      }
+    },
+    {
+      "id": "teach-cormaic",
+      "number": 7,
+      "title": "टीच कॉर्मैक",
+      "subtitle": "राजा प्रकट होता है",
+      "primaryAction": "राजा के घर में प्रवेश करें",
+      "media": {
+        "video": "07_cormaic.mp4",
+        "model": "7cormaic.glb"
+      }
+    },
+    {
+      "id": "st-patrick",
+      "number": 8,
+      "title": "सेंट पैट्रिक",
+      "subtitle": "यात्रा समाप्त होती है",
+      "primaryAction": "☘ पैट्रिक की कहानी सुनें",
+      "media": {
+        "video": "08_patrick.mp4",
+        "model": "8patrick.glb"
+      }
+    }
+  ]
+}

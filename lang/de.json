@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "language": "de",
+  "locale": "de-DE",
+  "languageName": "Deutsch",
+  "englishName": "German",
+  "direction": "ltr",
+  "ui": {
+    "name": "Deutsch",
+    "locale": "de",
+    "heroTagline": "SITZ DER HOCHKÖNIGE",
+    "language": "Sprache",
+    "gpsTitle": "GPS-Rundgang",
+    "gpsSubtitle": "Folgen Sie dem Pfad des Königs",
+    "destination": "Ziel:",
+    "enableGps": "GPS-Kompass aktivieren",
+    "gpsActive": "GPS-Kompass aktiv",
+    "jumpCurrent": "Zum aktuellen Halt",
+    "gpsNote": "Am besten im Freien verwenden. GPS kann nahe Bäumen oder Gebäuden um 5–20 Meter abweichen.",
+    "stop": "HALT",
+    "beginDefault": "♛ DIESEN HALT BEGINNEN",
+    "beginHint": "Tippen Sie auf die goldene Schaltfläche, um die Geschichte zu starten. Das Video öffnet sich im Vollbild und kehrt danach für AR hierher zurück.",
+    "storyDone": "✨ Geschichte beendet. Sehen Sie sich nun die AR-Szene an. Die GPS-Führung befindet sich oben.",
+    "arLabel": "AR-Erlebnis",
+    "arTitle": "In AR ansehen",
+    "arText": "Platzieren Sie das alte Tara in der Landschaft.",
+    "launchAr": "AR STARTEN",
+    "arSoon": "AR BALD VERFÜGBAR",
+    "photoMain": "📸 Fototipp: Tippen Sie nach dem Öffnen von AR auf den Bildschirm, um die Kamerataste anzuzeigen.",
+    "photoSmall": "Für Gruppenfotos hält eine Person das Telefon, während die anderen in die Szene treten.",
+    "nextStop": "NÄCHSTER HALT",
+    "continue": "Weiter →",
+    "finishTour": "TOUR BEENDEN",
+    "finishButton": "Tour beenden",
+    "farewell": "Abschieds- und Dankesnachricht abspielen",
+    "welcome": "Willkommen auf<br>dem Hill of Tara",
+    "gateIntro": "Sitz der irischen Hochkönige. Der Pfad des Königs beginnt am Eingang.",
+    "startEntrance": "Am Eingang beginnen",
+    "resume": "Vorherigen Halt fortsetzen",
+    "jumpNearest": "Zu meinem aktuellen Standort",
+    "gateNote": "Beginnen Sie für die ganze Geschichte am Eingang. Befinden Sie sich bereits an einem anderen Halt, verwenden Sie GPS.",
+    "metres": "Meter verbleibend",
+    "checking": "Standort wird geprüft…",
+    "gpsUnavailable": "GPS ist auf diesem Gerät nicht verfügbar.",
+    "locationUnavailable": "Der Standort war nicht verfügbar. Sie können dennoch am Eingang beginnen.",
+    "locationNeeded": "Für den Kompass ist Standortzugriff erforderlich.",
+    "enableFirst": "Aktivieren Sie zuerst GPS, um den nächstgelegenen Halt zu finden.",
+    "storyComplete": "✓ GESCHICHTE BEENDET",
+    "pathContinues": "Der Pfad des Königs geht weiter",
+    "storyCompleteTitle": "Die Geschichte ist beendet",
+    "nextLabel": "Nächster Halt:",
+    "thanksWalk": "Danke für Ihren Rundgang über den Hill of Tara.",
+    "compassContinue": "Verwenden Sie oben den Kompass",
+    "toNext": "bis zum nächsten Halt",
+    "returnStart": "Zurück zum Anfang",
+    "discoverMeath": "Meath entdecken",
+    "thanks": "Danke",
+    "stopVideo": "■ Video stoppen"
+  },
+  "stops": [
+    {
+      "id": "entrance",
+      "number": 1,
+      "title": "DER EINGANG",
+      "subtitle": "Beginnen Sie Ihre Reise",
+      "primaryAction": "♛ REISE BEGINNEN",
+      "media": {
+        "video": "01_entrance.mp4",
+        "model": "1entrance.glb"
+      }
+    },
+    {
+      "id": "banqueting-hall",
+      "number": 2,
+      "title": "DIE FESTHALLE",
+      "subtitle": "Gehen Sie die Zeremonialallee entlang",
+      "primaryAction": "ZUM KÖNIGLICHEN FEST",
+      "media": {
+        "video": "02_banquet.mp4",
+        "model": "2banquethall.glb"
+      }
+    },
+    {
+      "id": "palisade",
+      "number": 3,
+      "title": "DIE PALISADE",
+      "subtitle": "Betreten Sie den großen Holzkreis",
+      "primaryAction": "DIE GROSSE EINFRIEDUNG BETRETEN",
+      "media": {
+        "video": "03_palisade.mp4",
+        "model": "3pallisade.glb"
+      }
+    },
+    {
+      "id": "rath-of-the-synods",
+      "number": 4,
+      "title": "RATH DER SYNODEN",
+      "subtitle": "Wo sich heilige und königliche Welten begegnen",
+      "primaryAction": "⚜ DIE KRÖNUNG ERLEBEN",
+      "media": {
+        "video": "04_rath.mp4",
+        "model": "4rath.glb"
+      }
+    },
+    {
+      "id": "mound-of-the-hostages",
+      "number": 5,
+      "title": "HÜGEL DER GEISELN",
+      "subtitle": "Nähern Sie sich dem alten Grab",
+      "primaryAction": "DAS ALTE GRAB ENTDECKEN",
+      "media": {
+        "video": "05_mound.mp4",
+        "model": "5mound.glb"
+      }
+    },
+    {
+      "id": "stone-of-destiny",
+      "number": 6,
+      "title": "STEIN DES SCHICKSALS",
+      "subtitle": "Die Erwählung",
+      "primaryAction": "DEN STEIN DER KÖNIGE BERÜHREN",
+      "media": {
+        "video": "06_stone.mp4",
+        "model": "6stone.glb"
+      }
+    },
+    {
+      "id": "teach-cormaic",
+      "number": 7,
+      "title": "TEACH CORMAIC",
+      "subtitle": "Der König wird offenbart",
+      "primaryAction": "DAS HAUS DES KÖNIGS BETRETEN",
+      "media": {
+        "video": "07_cormaic.mp4",
+        "model": "7cormaic.glb"
+      }
+    },
+    {
+      "id": "st-patrick",
+      "number": 8,
+      "title": "ST. PATRICK",
+      "subtitle": "Die Reise endet",
+      "primaryAction": "☘ PATRICKS GESCHICHTE HÖREN",
+      "media": {
+        "video": "08_patrick.mp4",
+        "model": "8patrick.glb"
+      }
+    }
+  ]
+}

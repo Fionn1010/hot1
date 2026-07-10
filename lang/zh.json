@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "language": "zh",
+  "locale": "zh-CN",
+  "languageName": "简体中文",
+  "englishName": "Simplified Chinese",
+  "direction": "ltr",
+  "ui": {
+    "name": "中文",
+    "locale": "zh",
+    "heroTagline": "爱尔兰至高王之地",
+    "language": "语言",
+    "gpsTitle": "GPS 导览",
+    "gpsSubtitle": "沿着国王之路前行",
+    "destination": "目的地：",
+    "enableGps": "启用 GPS 指南针",
+    "gpsActive": "GPS 指南针已启用",
+    "jumpCurrent": "前往当前站点",
+    "gpsNote": "建议在户外使用。树木或建筑附近的 GPS 可能会偏移 5–20 米。",
+    "stop": "第",
+    "beginDefault": "♛ 开始此站",
+    "beginHint": "点击金色按钮开始故事。视频将全屏播放，之后返回此页面体验增强现实。",
+    "storyDone": "✨ 故事已结束。接下来查看增强现实场景。GPS 导览位于页面顶部。",
+    "arLabel": "增强现实体验",
+    "arTitle": "在 AR 中查看",
+    "arText": "将古代塔拉呈现在真实景观中。",
+    "launchAr": "启动 AR",
+    "arSoon": "AR 即将推出",
+    "photoMain": "📸 拍照提示：AR 打开后，点击屏幕即可显示相机按钮。",
+    "photoSmall": "拍摄合照时，可由一人拿手机，其他人走进场景。",
+    "nextStop": "下一站",
+    "continue": "继续 →",
+    "finishTour": "结束导览",
+    "finishButton": "结束导览",
+    "farewell": "播放告别与感谢信息",
+    "welcome": "欢迎来到<br>塔拉山",
+    "gateIntro": "这里是爱尔兰至高王之地。国王之路从入口开始。",
+    "startEntrance": "从入口开始",
+    "resume": "继续上一站",
+    "jumpNearest": "前往我的当前位置",
+    "gateNote": "要体验完整故事，请从入口开始。如果您已经在其他站点，可使用 GPS 定位附近站点。",
+    "metres": "米剩余",
+    "checking": "正在检查您的位置…",
+    "gpsUnavailable": "此设备不支持 GPS。",
+    "locationUnavailable": "无法获取位置。您仍可从入口开始。",
+    "locationNeeded": "指南针需要位置权限。",
+    "enableFirst": "请先启用 GPS，以查找最近的站点。",
+    "storyComplete": "✓ 故事已完成",
+    "pathContinues": "国王之路继续",
+    "storyCompleteTitle": "故事已经结束",
+    "nextLabel": "下一站：",
+    "thanksWalk": "感谢您游览塔拉山。",
+    "compassContinue": "使用页面顶部的指南针继续",
+    "toNext": "到下一站",
+    "returnStart": "返回起点",
+    "discoverMeath": "探索米斯郡",
+    "thanks": "谢谢",
+    "stopVideo": "■ 停止视频"
+  },
+  "stops": [
+    {
+      "id": "entrance",
+      "number": 1,
+      "title": "入口",
+      "subtitle": "开始您的旅程",
+      "primaryAction": "♛ 开始旅程",
+      "media": {
+        "video": "01_entrance.mp4",
+        "model": "1entrance.glb"
+      }
+    },
+    {
+      "id": "banqueting-hall",
+      "number": 2,
+      "title": "宴会大厅",
+      "subtitle": "沿着仪式大道前行",
+      "primaryAction": "进入王室宴会",
+      "media": {
+        "video": "02_banquet.mp4",
+        "model": "2banquethall.glb"
+      }
+    },
+    {
+      "id": "palisade",
+      "number": 3,
+      "title": "木栅栏",
+      "subtitle": "进入巨大的木制圆环",
+      "primaryAction": "进入大型围场",
+      "media": {
+        "video": "03_palisade.mp4",
+        "model": "3pallisade.glb"
+      }
+    },
+    {
+      "id": "rath-of-the-synods",
+      "number": 4,
+      "title": "宗教会议之环",
+      "subtitle": "神圣与王权交汇之地",
+      "primaryAction": "⚜ 见证加冕",
+      "media": {
+        "video": "04_rath.mp4",
+        "model": "4rath.glb"
+      }
+    },
+    {
+      "id": "mound-of-the-hostages",
+      "number": 5,
+      "title": "人质墓冢",
+      "subtitle": "走近古老墓室",
+      "primaryAction": "探索古老墓室",
+      "media": {
+        "video": "05_mound.mp4",
+        "model": "5mound.glb"
+      }
+    },
+    {
+      "id": "stone-of-destiny",
+      "number": 6,
+      "title": "命运之石",
+      "subtitle": "王者之选",
+      "primaryAction": "触摸王者之石",
+      "media": {
+        "video": "06_stone.mp4",
+        "model": "6stone.glb"
+      }
+    },
+    {
+      "id": "teach-cormaic",
+      "number": 7,
+      "title": "科马克之屋",
+      "subtitle": "国王显现",
+      "primaryAction": "进入国王之屋",
+      "media": {
+        "video": "07_cormaic.mp4",
+        "model": "7cormaic.glb"
+      }
+    },
+    {
+      "id": "st-patrick",
+      "number": 8,
+      "title": "圣帕特里克",
+      "subtitle": "旅程结束",
+      "primaryAction": "☘ 聆听帕特里克的故事",
+      "media": {
+        "video": "08_patrick.mp4",
+        "model": "8patrick.glb"
+      }
+    }
+  ]
+}

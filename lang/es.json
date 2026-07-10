@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "language": "es",
+  "locale": "es-ES",
+  "languageName": "Español",
+  "englishName": "Spanish",
+  "direction": "ltr",
+  "ui": {
+    "name": "Español",
+    "locale": "es",
+    "heroTagline": "SEDE DE LOS ALTOS REYES",
+    "language": "Idioma",
+    "gpsTitle": "Recorrido GPS",
+    "gpsSubtitle": "Sigue el Camino del Rey",
+    "destination": "Destino:",
+    "enableGps": "Activar brújula GPS",
+    "gpsActive": "Brújula GPS activa",
+    "jumpCurrent": "Ir a la parada actual",
+    "gpsNote": "Se recomienda usar al aire libre. El GPS puede desviarse entre 5 y 20 metros cerca de árboles o edificios.",
+    "stop": "PARADA",
+    "beginDefault": "♛ COMENZAR ESTA PARADA",
+    "beginHint": "Toca el botón dorado para iniciar la historia. El vídeo se abre a pantalla completa y vuelve aquí para la RA.",
+    "storyDone": "✨ Historia terminada. Ahora contempla la escena en RA. La guía GPS está en la parte superior.",
+    "arLabel": "Experiencia de RA",
+    "arTitle": "Ver en RA",
+    "arText": "Coloca la antigua Tara en el paisaje.",
+    "launchAr": "INICIAR RA",
+    "arSoon": "RA PRÓXIMAMENTE",
+    "photoMain": "📸 Consejo para fotos: cuando se abra la RA, toca la pantalla para mostrar el botón de la cámara.",
+    "photoSmall": "Para fotos de grupo, una persona puede sostener el teléfono mientras las demás entran en la escena.",
+    "nextStop": "SIGUIENTE PARADA",
+    "continue": "Continuar →",
+    "finishTour": "FINALIZAR RECORRIDO",
+    "finishButton": "Finalizar recorrido",
+    "farewell": "Reproducir el mensaje de despedida y agradecimiento",
+    "welcome": "Bienvenido a<br>la colina de Tara",
+    "gateIntro": "Sede de los Altos Reyes de Irlanda. El Camino del Rey comienza en la entrada.",
+    "startEntrance": "Comenzar en la entrada",
+    "resume": "Reanudar la parada anterior",
+    "jumpNearest": "Ir a mi ubicación actual",
+    "gateNote": "Para disfrutar de toda la historia, comienza en la entrada. Si ya estás en otra parada, utiliza el GPS.",
+    "metres": "metros restantes",
+    "checking": "Comprobando tu ubicación…",
+    "gpsUnavailable": "El GPS no está disponible en este dispositivo.",
+    "locationUnavailable": "No se pudo acceder a la ubicación. Aun así, puedes comenzar en la entrada.",
+    "locationNeeded": "La brújula necesita acceso a tu ubicación.",
+    "enableFirst": "Activa primero el GPS para encontrar la parada más cercana.",
+    "storyComplete": "✓ HISTORIA TERMINADA",
+    "pathContinues": "El Camino del Rey continúa",
+    "storyCompleteTitle": "La historia ha terminado",
+    "nextLabel": "Siguiente parada:",
+    "thanksWalk": "Gracias por recorrer la colina de Tara.",
+    "compassContinue": "Utiliza la brújula de arriba para continuar",
+    "toNext": "hasta la siguiente parada",
+    "returnStart": "Volver al inicio",
+    "discoverMeath": "Descubrir Meath",
+    "thanks": "Gracias",
+    "stopVideo": "■ Detener vídeo"
+  },
+  "stops": [
+    {
+      "id": "entrance",
+      "number": 1,
+      "title": "LA ENTRADA",
+      "subtitle": "Comienza tu viaje",
+      "primaryAction": "♛ COMENZAR EL VIAJE",
+      "media": {
+        "video": "01_entrance.mp4",
+        "model": "1entrance.glb"
+      }
+    },
+    {
+      "id": "banqueting-hall",
+      "number": 2,
+      "title": "EL SALÓN DE BANQUETES",
+      "subtitle": "Recorre la avenida ceremonial",
+      "primaryAction": "ENTRAR EN EL BANQUETE REAL",
+      "media": {
+        "video": "02_banquet.mp4",
+        "model": "2banquethall.glb"
+      }
+    },
+    {
+      "id": "palisade",
+      "number": 3,
+      "title": "LA EMPALIZADA",
+      "subtitle": "Entra en el gran círculo de madera",
+      "primaryAction": "ENTRAR EN EL GRAN RECINTO",
+      "media": {
+        "video": "03_palisade.mp4",
+        "model": "3pallisade.glb"
+      }
+    },
+    {
+      "id": "rath-of-the-synods",
+      "number": 4,
+      "title": "RATH DE LOS SÍNODOS",
+      "subtitle": "Donde se encuentran lo sagrado y lo real",
+      "primaryAction": "⚜ PRESENCIAR LA CORONACIÓN",
+      "media": {
+        "video": "04_rath.mp4",
+        "model": "4rath.glb"
+      }
+    },
+    {
+      "id": "mound-of-the-hostages",
+      "number": 5,
+      "title": "TÚMULO DE LOS REHENES",
+      "subtitle": "Acércate a la tumba antigua",
+      "primaryAction": "DESCUBRIR LA TUMBA ANTIGUA",
+      "media": {
+        "video": "05_mound.mp4",
+        "model": "5mound.glb"
+      }
+    },
+    {
+      "id": "stone-of-destiny",
+      "number": 6,
+      "title": "PIEDRA DEL DESTINO",
+      "subtitle": "La Elección",
+      "primaryAction": "TOCAR LA PIEDRA DE LOS REYES",
+      "media": {
+        "video": "06_stone.mp4",
+        "model": "6stone.glb"
+      }
+    },
+    {
+      "id": "teach-cormaic",
+      "number": 7,
+      "title": "TEACH CORMAIC",
+      "subtitle": "El rey se revela",
+      "primaryAction": "ENTRAR EN LA CASA DEL REY",
+      "media": {
+        "video": "07_cormaic.mp4",
+        "model": "7cormaic.glb"
+      }
+    },
+    {
+      "id": "st-patrick",
+      "number": 8,
+      "title": "SAN PATRICIO",
+      "subtitle": "El viaje termina",
+      "primaryAction": "☘ ESCUCHAR LA HISTORIA DE PATRICIO",
+      "media": {
+        "video": "08_patrick.mp4",
+        "model": "8patrick.glb"
+      }
+    }
+  ]
+}

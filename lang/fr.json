@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "language": "fr",
+  "locale": "fr-FR",
+  "languageName": "Français",
+  "englishName": "French",
+  "direction": "ltr",
+  "ui": {
+    "name": "Français",
+    "locale": "fr",
+    "heroTagline": "SIÈGE DES HAUTS ROIS",
+    "language": "Langue",
+    "gpsTitle": "Parcours GPS",
+    "gpsSubtitle": "Suivez le chemin du Roi",
+    "destination": "Destination :",
+    "enableGps": "Activer la boussole GPS",
+    "gpsActive": "Boussole GPS active",
+    "jumpCurrent": "Aller à l'étape actuelle",
+    "gpsNote": "À utiliser de préférence à l'extérieur. Le GPS peut varier de 5 à 20 mètres près des arbres ou bâtiments.",
+    "stop": "ÉTAPE",
+    "beginDefault": "♛ COMMENCER CETTE ÉTAPE",
+    "beginHint": "Touchez le bouton doré pour lancer l'histoire. La vidéo s'ouvre en plein écran, puis revient ici pour la RA.",
+    "storyDone": "✨ Histoire terminée. Découvrez maintenant la scène en RA. Le guide GPS se trouve en haut de la page.",
+    "arLabel": "Expérience RA",
+    "arTitle": "Voir en RA",
+    "arText": "Placez l'ancienne Tara dans le paysage.",
+    "launchAr": "LANCER LA RA",
+    "arSoon": "RA BIENTÔT DISPONIBLE",
+    "photoMain": "📸 Astuce photo : lorsque la RA s'ouvre, touchez l'écran pour afficher le bouton de l'appareil photo.",
+    "photoSmall": "Pour une photo de groupe, une personne tient le téléphone pendant que les autres entrent dans la scène.",
+    "nextStop": "ÉTAPE SUIVANTE",
+    "continue": "Continuer →",
+    "finishTour": "TERMINER LA VISITE",
+    "finishButton": "Terminer la visite",
+    "farewell": "Lire le message d'adieu et de remerciement",
+    "welcome": "Bienvenue sur<br>la colline de Tara",
+    "gateIntro": "Siège des Hauts Rois d'Irlande. Le chemin du Roi commence à l'entrée.",
+    "startEntrance": "Commencer à l'entrée",
+    "resume": "Reprendre l'étape précédente",
+    "jumpNearest": "Aller à ma position actuelle",
+    "gateNote": "Pour toute l'histoire, commencez à l'entrée. Si vous êtes déjà à une autre étape, utilisez le GPS.",
+    "metres": "mètres restants",
+    "checking": "Recherche de votre position…",
+    "gpsUnavailable": "Le GPS n'est pas disponible sur cet appareil.",
+    "locationUnavailable": "La position n'était pas disponible. Vous pouvez tout de même commencer à l'entrée.",
+    "locationNeeded": "L'accès à la position est nécessaire pour la boussole.",
+    "enableFirst": "Activez d'abord le GPS pour trouver l'étape la plus proche.",
+    "storyComplete": "✓ HISTOIRE TERMINÉE",
+    "pathContinues": "Le chemin du Roi continue",
+    "storyCompleteTitle": "L'histoire est terminée",
+    "nextLabel": "Étape suivante :",
+    "thanksWalk": "Merci d'avoir parcouru la colline de Tara.",
+    "compassContinue": "Utilisez la boussole en haut pour continuer",
+    "toNext": "jusqu'à l'étape suivante",
+    "returnStart": "Retour au début",
+    "discoverMeath": "Découvrir Meath",
+    "thanks": "Merci",
+    "stopVideo": "■ Arrêter la vidéo"
+  },
+  "stops": [
+    {
+      "id": "entrance",
+      "number": 1,
+      "title": "L'ENTRÉE",
+      "subtitle": "Commencez votre voyage",
+      "primaryAction": "♛ COMMENCER LE VOYAGE",
+      "media": {
+        "video": "01_entrance.mp4",
+        "model": "1entrance.glb"
+      }
+    },
+    {
+      "id": "banqueting-hall",
+      "number": 2,
+      "title": "LA SALLE DES BANQUETS",
+      "subtitle": "Parcourez l'avenue cérémonielle",
+      "primaryAction": "ENTRER DANS LE FESTIN ROYAL",
+      "media": {
+        "video": "02_banquet.mp4",
+        "model": "2banquethall.glb"
+      }
+    },
+    {
+      "id": "palisade",
+      "number": 3,
+      "title": "LA PALISSADE",
+      "subtitle": "Entrez dans le grand cercle de bois",
+      "primaryAction": "ENTRER DANS LA GRANDE ENCEINTE",
+      "media": {
+        "video": "03_palisade.mp4",
+        "model": "3pallisade.glb"
+      }
+    },
+    {
+      "id": "rath-of-the-synods",
+      "number": 4,
+      "title": "RATH DES SYNODES",
+      "subtitle": "Quand les mondes sacré et royal se rencontrent",
+      "primaryAction": "⚜ ASSISTER AU COURONNEMENT",
+      "media": {
+        "video": "04_rath.mp4",
+        "model": "4rath.glb"
+      }
+    },
+    {
+      "id": "mound-of-the-hostages",
+      "number": 5,
+      "title": "LE TUMULUS DES OTAGES",
+      "subtitle": "Approchez de l'ancien tombeau",
+      "primaryAction": "DÉCOUVRIR L'ANCIEN TOMBEAU",
+      "media": {
+        "video": "05_mound.mp4",
+        "model": "5mound.glb"
+      }
+    },
+    {
+      "id": "stone-of-destiny",
+      "number": 6,
+      "title": "LA PIERRE DU DESTIN",
+      "subtitle": "Le Choix",
+      "primaryAction": "TOUCHER LA PIERRE DES ROIS",
+      "media": {
+        "video": "06_stone.mp4",
+        "model": "6stone.glb"
+      }
+    },
+    {
+      "id": "teach-cormaic",
+      "number": 7,
+      "title": "TEACH CORMAIC",
+      "subtitle": "Le roi se révèle",
+      "primaryAction": "ENTRER DANS LA MAISON DU ROI",
+      "media": {
+        "video": "07_cormaic.mp4",
+        "model": "7cormaic.glb"
+      }
+    },
+    {
+      "id": "st-patrick",
+      "number": 8,
+      "title": "SAINT PATRICK",
+      "subtitle": "Le voyage se termine",
+      "primaryAction": "☘ ÉCOUTER L'HISTOIRE DE PATRICK",
+      "media": {
+        "video": "08_patrick.mp4",
+        "model": "8patrick.glb"
+      }
+    }
+  ]
+}

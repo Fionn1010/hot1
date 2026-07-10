@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "language": "pt",
+  "locale": "pt-PT",
+  "languageName": "Português",
+  "englishName": "Portuguese",
+  "direction": "ltr",
+  "ui": {
+    "name": "Português",
+    "locale": "pt",
+    "heroTagline": "SEDE DOS ALTOS REIS",
+    "language": "Idioma",
+    "gpsTitle": "Percurso GPS",
+    "gpsSubtitle": "Siga o Caminho do Rei",
+    "destination": "Destino:",
+    "enableGps": "Ativar bússola GPS",
+    "gpsActive": "Bússola GPS ativa",
+    "jumpCurrent": "Ir para a paragem atual",
+    "gpsNote": "É melhor usar ao ar livre. O GPS pode variar entre 5 e 20 metros perto de árvores ou edifícios.",
+    "stop": "PARAGEM",
+    "beginDefault": "♛ INICIAR ESTA PARAGEM",
+    "beginHint": "Toque no botão dourado para iniciar a história. O vídeo abre em ecrã inteiro e depois regressa aqui para a RA.",
+    "storyDone": "✨ História concluída. Veja agora a cena em RA. O guia GPS está no topo da página.",
+    "arLabel": "Experiência de RA",
+    "arTitle": "Ver em RA",
+    "arText": "Coloque a antiga Tara na paisagem.",
+    "launchAr": "INICIAR RA",
+    "arSoon": "RA EM BREVE",
+    "photoMain": "📸 Dica de fotografia: quando a RA abrir, toque no ecrã para mostrar o botão da câmara.",
+    "photoSmall": "Para fotografias de grupo, uma pessoa segura o telefone enquanto as outras entram na cena.",
+    "nextStop": "PRÓXIMA PARAGEM",
+    "continue": "Continuar →",
+    "finishTour": "TERMINAR VISITA",
+    "finishButton": "Terminar visita",
+    "farewell": "Reproduzir a mensagem de despedida e agradecimento",
+    "welcome": "Bem-vindo à<br>Colina de Tara",
+    "gateIntro": "Sede dos Altos Reis da Irlanda. O Caminho do Rei começa na entrada.",
+    "startEntrance": "Começar na entrada",
+    "resume": "Retomar a paragem anterior",
+    "jumpNearest": "Ir para a minha localização atual",
+    "gateNote": "Para seguir toda a história, comece na entrada. Se já estiver noutra paragem, utilize o GPS.",
+    "metres": "metros restantes",
+    "checking": "A verificar a sua localização…",
+    "gpsUnavailable": "O GPS não está disponível neste dispositivo.",
+    "locationUnavailable": "Não foi possível obter a localização. Ainda pode começar na entrada.",
+    "locationNeeded": "É necessário acesso à localização para a bússola.",
+    "enableFirst": "Ative primeiro o GPS para encontrar a paragem mais próxima.",
+    "storyComplete": "✓ HISTÓRIA CONCLUÍDA",
+    "pathContinues": "O Caminho do Rei continua",
+    "storyCompleteTitle": "A história terminou",
+    "nextLabel": "Próxima paragem:",
+    "thanksWalk": "Obrigado por percorrer a Colina de Tara.",
+    "compassContinue": "Use a bússola no topo para continuar",
+    "toNext": "até à próxima paragem",
+    "returnStart": "Voltar ao início",
+    "discoverMeath": "Descobrir Meath",
+    "thanks": "Obrigado",
+    "stopVideo": "■ Parar vídeo"
+  },
+  "stops": [
+    {
+      "id": "entrance",
+      "number": 1,
+      "title": "A ENTRADA",
+      "subtitle": "Comece a sua viagem",
+      "primaryAction": "♛ COMEÇAR A VIAGEM",
+      "media": {
+        "video": "01_entrance.mp4",
+        "model": "1entrance.glb"
+      }
+    },
+    {
+      "id": "banqueting-hall",
+      "number": 2,
+      "title": "O SALÃO DE BANQUETES",
+      "subtitle": "Percorra a avenida cerimonial",
+      "primaryAction": "ENTRAR NO BANQUETE REAL",
+      "media": {
+        "video": "02_banquet.mp4",
+        "model": "2banquethall.glb"
+      }
+    },
+    {
+      "id": "palisade",
+      "number": 3,
+      "title": "A PALIÇADA",
+      "subtitle": "Entre no grande círculo de madeira",
+      "primaryAction": "ENTRAR NO GRANDE RECINTO",
+      "media": {
+        "video": "03_palisade.mp4",
+        "model": "3pallisade.glb"
+      }
+    },
+    {
+      "id": "rath-of-the-synods",
+      "number": 4,
+      "title": "RATH DOS SÍNODOS",
+      "subtitle": "Onde os mundos sagrado e real se encontram",
+      "primaryAction": "⚜ ASSISTIR À COROAÇÃO",
+      "media": {
+        "video": "04_rath.mp4",
+        "model": "4rath.glb"
+      }
+    },
+    {
+      "id": "mound-of-the-hostages",
+      "number": 5,
+      "title": "TÚMULO DOS REFÉNS",
+      "subtitle": "Aproxime-se do túmulo antigo",
+      "primaryAction": "DESCOBRIR O TÚMULO ANTIGO",
+      "media": {
+        "video": "05_mound.mp4",
+        "model": "5mound.glb"
+      }
+    },
+    {
+      "id": "stone-of-destiny",
+      "number": 6,
+      "title": "PEDRA DO DESTINO",
+      "subtitle": "A Escolha",
+      "primaryAction": "TOCAR NA PEDRA DOS REIS",
+      "media": {
+        "video": "06_stone.mp4",
+        "model": "6stone.glb"
+      }
+    },
+    {
+      "id": "teach-cormaic",
+      "number": 7,
+      "title": "TEACH CORMAIC",
+      "subtitle": "O rei é revelado",
+      "primaryAction": "ENTRAR NA CASA DO REI",
+      "media": {
+        "video": "07_cormaic.mp4",
+        "model": "7cormaic.glb"
+      }
+    },
+    {
+      "id": "st-patrick",
+      "number": 8,
+      "title": "SÃO PATRÍCIO",
+      "subtitle": "A viagem termina",
+      "primaryAction": "☘ OUVIR A HISTÓRIA DE PATRÍCIO",
+      "media": {
+        "video": "08_patrick.mp4",
+        "model": "8patrick.glb"
+      }
+    }
+  ]
+}
