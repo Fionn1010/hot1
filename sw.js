@@ -2,7 +2,7 @@
    Experience 011 — Hill of Tara
 */
 
-const CACHE_VERSION = 'fionn-e011-v1';
+const CACHE_VERSION = 'fionn-e011-v2';
 
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 const PRELOAD_CACHE = `${CACHE_VERSION}-experience`;
