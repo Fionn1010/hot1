@@ -1,0 +1,90 @@
+[
+  {
+    "id": "entrance",
+    "title": "THE ENTRANCE",
+    "subtitle": "Begin your journey",
+    "action": "♛ BEGIN YOUR JOURNEY",
+    "coordinates": {
+      "lat": 53.581724,
+      "lng": -6.610032
+    },
+    "model": "1entrance.glb"
+  },
+  {
+    "id": "banqueting-hall",
+    "title": "THE BANQUETING HALL",
+    "subtitle": "Walk the ceremonial avenue",
+    "action": "ENTER THE ROYAL FEAST",
+    "coordinates": {
+      "lat": 53.580742,
+      "lng": -6.611737
+    },
+    "model": "2banquethall.glb"
+  },
+  {
+    "id": "palisade",
+    "title": "THE PALISADE",
+    "subtitle": "Enter the great timber circle",
+    "action": "ENTER THE GREAT ENCLOSURE",
+    "coordinates": {
+      "lat": 53.58063,
+      "lng": -6.61188
+    },
+    "model": "3pallisade.glb"
+  },
+  {
+    "id": "rath-of-the-synods",
+    "title": "RATH OF THE SYNODS",
+    "subtitle": "Where sacred and royal worlds meet",
+    "action": "⚜ WITNESS THE CORONATION",
+    "coordinates": {
+      "lat": 53.580279,
+      "lng": -6.612217
+    },
+    "model": "4rath.glb"
+  },
+  {
+    "id": "mound-of-the-hostages",
+    "title": "MOUND OF THE HOSTAGES",
+    "subtitle": "Step toward the ancient tomb",
+    "action": "DISCOVER THE ANCIENT TOMB",
+    "coordinates": {
+      "lat": 53.579485,
+      "lng": -6.611493
+    },
+    "model": "5mound.glb"
+  },
+  {
+    "id": "stone-of-destiny",
+    "title": "STONE OF DESTINY",
+    "subtitle": "The Choosing",
+    "action": "TOUCH THE STONE OF KINGS",
+    "coordinates": {
+      "lat": 53.578588,
+      "lng": -6.611913
+    },
+    "model": "6stone.glb"
+  },
+  {
+    "id": "teach-cormaic",
+    "title": "TEACH CORMAIC",
+    "subtitle": "The king is revealed",
+    "action": "ENTER THE KING’S HOUSE",
+    "coordinates": {
+      "lat": 53.578379,
+      "lng": -6.611426
+    },
+    "model": "7cormaic.glb"
+  },
+  {
+    "id": "st-patrick",
+    "title": "ST PATRICK",
+    "subtitle": "The journey ends",
+    "action": "☘ HEAR PATRICK’S STORY",
+    "coordinates": {
+      "lat": 53.58091,
+      "lng": -6.610797
+    },
+    "model": "8patrick.glb"
+  }
+]

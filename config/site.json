@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "siteId": "tara",
+  "name": "Hill of Tara",
+  "defaultLanguage": "en",
+  "supportedLanguages": [
+    "en",
+    "ga",
+    "fr",
+    "de",
+    "es",
+    "it",
+    "pt",
+    "zh",
+    "hi",
+    "th"
+  ],
+  "content": {
+    "stops": "config/stops.json",
+    "media": "config/media.json"
+  },
+  "assetFolders": {
+    "videos": "videos/",
+    "models": "models/",
+    "images": "images/",
+    "languages": "lang/"
+  }
+}
