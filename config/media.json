@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "stops": {
+    "entrance": {
+      "default": "01_entrance.mp4",
+      "languages": {
+        "de": "01_entrance_de_dubbed.mp4",
+        "fr": "01_entrance_fr_dubbed.mp4",
+        "it": "01_entrance_it_dubbed.mp4",
+        "es": "01_entrance_es_dubbed.mp4",
+        "hi": "01_entrance_hi_dubbed.mp4",
+        "th": "01_entrance_th_dubbed.mp4",
+        "zh": "01_entrance_zh_dubbed.mp4"
+      }
+    },
+    "banqueting-hall": {
+      "default": "02_banquet.mp4",
+      "languages": {
+        "de": "02_banquet_de_dubbed.mp4",
+        "fr": "02_banquet_fr_dubbed.mp4",
+        "it": "02_banquet_it_dubbed.mp4",
+        "es": "02_banquet_es_dubbed.mp4",
+        "hi": "02_banquet_hi_dubbed.mp4",
+        "th": "02_banquet_th_dubbed.mp4",
+        "zh": "02_banquet_zh_dubbed.mp4"
+      }
+    },
+    "palisade": {
+      "default": "03_palisade.mp4",
+      "languages": {}
+    },
+    "rath-of-the-synods": {
+      "default": "04_rath.mp4",
+      "languages": {}
+    },
+    "mound-of-the-hostages": {
+      "default": "05_mound.mp4",
+      "languages": {}
+    },
+    "stone-of-destiny": {
+      "default": "06_stone.mp4",
+      "languages": {}
+    },
+    "teach-cormaic": {
+      "default": "07_cormaic.mp4",
+      "languages": {}
+    },
+    "st-patrick": {
+      "default": "08_patrick.mp4",
+      "languages": {}
+    }
+  }
+}
