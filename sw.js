@@ -2,7 +2,7 @@
    Experience 011 — Hill of Tara
 */
 
-const CACHE_VERSION = 'fionn-e011-v6';
+const CACHE_VERSION = 'fionn-e011-v6-modular';
 
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 const PRELOAD_CACHE = `${CACHE_VERSION}-experience`;
@@ -25,7 +25,17 @@ self.addEventListener('install', event => {
         return cache
           .addAll([
             './',
-            'index.html'
+            'index.html',
+            'css/styles.css',
+            'js/config.js',
+            'js/language.js',
+            'js/developer.js',
+            'js/core.js',
+            'js/ar.js',
+            'js/video.js',
+            'js/gps.js',
+            'js/preload.js',
+            'js/app.js'
           ])
           .catch(() => {});
 
