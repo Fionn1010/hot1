@@ -27,7 +27,14 @@
     },
     "palisade": {
       "default": "03_palisade.mp4",
-      "languages": {}
+      "languages": {
+        "de": "03_palisade_de_dubbed.mp4",
+        "fr": "03_palisade_fr_dubbed.mp4",
+        "it": "03_palisade_it_dubbed.mp4",
+        "es": "03_palisade_es_dubbed.mp4",
+        "th": "03_palisade_th_dubbed.mp4",
+        "zh": "03_palisade_zh_dubbed.mp4"
+      }
     },
     "rath-of-the-synods": {
       "default": "04_rath.mp4",
