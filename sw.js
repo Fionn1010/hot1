@@ -2,4 +2,4 @@
    Experience 011 — Hill of Tara
 */
 
-const CACHE_VERSION = 'fionn-e011-v9-bottom-dev-tools
+const CACHE_VERSION = 'fionn-e011-v10-dev-language-selector

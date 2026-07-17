@@ -83,3 +83,55 @@
 @media(min-width:720px){
  .sceneTestRow{grid-template-columns:minmax(0,1fr) 300px;align-items:center}
 }
+
+
+/* Prominent developer language tester */
+.devLanguageTester{
+ margin:0 0 16px;
+ padding:14px;
+ border:1px solid #c9ae69;
+ border-radius:16px;
+ background:#fffaf0;
+}
+.devLanguageTester label{
+ display:block;
+ margin-bottom:8px;
+ font-weight:900;
+ color:#332817;
+}
+.devLanguageSelectRow{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ gap:8px;
+}
+#devLanguageSelect{
+ min-height:50px;
+ width:100%;
+ border:1px solid #b79548;
+ border-radius:12px;
+ padding:0 12px;
+ background:#fff;
+ color:#2b2317;
+ font:inherit;
+ font-weight:800;
+}
+.devApplyLanguageBtn{
+ min-height:50px;
+ border:0;
+ border-radius:12px;
+ padding:0 16px;
+ background:linear-gradient(180deg,#2f754b,#215b39);
+ color:#fff;
+ font:inherit;
+ font-weight:900;
+ cursor:pointer;
+}
+#devLanguageHelp{
+ margin:9px 0 0;
+ color:#6e6046;
+ font-size:13px;
+ line-height:1.4;
+}
+@media(max-width:560px){
+ .devLanguageSelectRow{grid-template-columns:1fr}
+}

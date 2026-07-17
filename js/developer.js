@@ -27,7 +27,35 @@ function initialiseDeveloperTools(){
   setDeveloperStatus("Saved language removed. Reload the page to test automatic detection.","ok");
   updateLanguageDiagnostics();
  });
+ populateDeveloperLanguageSelector();
  updateLanguageDiagnostics();
+}
+
+function populateDeveloperLanguageSelector(){
+ const select=$("devLanguageSelect");
+ if(!select) return;
+ select.innerHTML="";
+ Object.entries(LANGUAGES).forEach(([code,info])=>{
+  const option=document.createElement("option");
+  option.value=code;
+  option.textContent=info.name||code;
+  select.appendChild(option);
+ });
+ select.value=currentLanguage;
+
+ $("applyDevLanguage")?.addEventListener("click",async()=>{
+  const code=select.value||"en";
+  await testAndApplyLanguagePack(code);
+  select.value=currentLanguage;
+  renderStop(false);
+ });
+
+ select.addEventListener("change",async()=>{
+  const code=select.value||"en";
+  await testAndApplyLanguagePack(code);
+  select.value=currentLanguage;
+  renderStop(false);
+ });
 }
 
 
@@ -154,6 +182,8 @@ function updateLanguageDiagnostics(){
  $("diagActiveLanguage").textContent=`${currentLanguage} (${LANGUAGES[currentLanguage]?.name||"English"})`;
  $("diagLoadedSource").textContent=languagePackSource;
  $("diagPackPath").textContent=expectedPackPath(currentLanguage);
+ const devSelect=$("devLanguageSelect");
+ if(devSelect) devSelect.value=currentLanguage;
 
  document.querySelectorAll("[data-dev-lang]").forEach(button=>{
   button.classList.toggle("active",button.dataset.devLang===currentLanguage);
