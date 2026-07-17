@@ -1,4 +1,4 @@
-const savedStop=Number(localStorage.getItem('taraStop')||0);let current=0,userPos=null,heading=0,arrivalAnnounced=false,tourMode='ARRIVED',arWasLaunched=false,arSessionStarted=false;const $=id=>document.getElementById(id),video=$('storyVideo'),model=$('modelViewer');
+let savedStop=Number(localStorage.getItem('taraStop')||0);let current=0,userPos=null,heading=0,arrivalAnnounced=false,tourMode='ARRIVED',arWasLaunched=false,arSessionStarted=false;const $=id=>document.getElementById(id),video=$('storyVideo'),model=$('modelViewer');
 function hideGate(){const gate=$('gateScreen');gate.classList.add('hide');setTimeout(()=>{gate.style.display='none'},480)}
 function showGateOptions(){const t=UI[currentLanguage]||UI.en;const translated=translatedStop(savedStop);if(savedStop>0&&savedStop<STOPS.length){$('resumeTour').style.display='block';$('resumeTour').textContent=`${t.resume}: ${translated.title}`;$('gateActions').classList.add('two')}else{$('resumeTour').style.display='none';$('gateActions').classList.remove('two')}}
 function chooseEntrance(){current=0;renderStop();hideGate()}function chooseResume(){current=savedStop;renderStop();hideGate()}

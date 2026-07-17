@@ -14,52 +14,62 @@
   <div class="languageBar"><label for="languageSelect" id="languageLabel">Language</label><select class="languageSelect" id="languageSelect" aria-label="Tour language"></select></div><section class="gps topGuide" id="gpsSection"><h2 id="gpsTitle">GPS Journey</h2><p id="gpsSubtitle">Follow the King's Path</p><div class="compassWrap"><div class="compass"><div class="dir n">N</div><div class="dir e">E</div><div class="dir s">S</div><div class="dir w">W</div><div class="pointer" id="pointer" aria-label="direction pointer"><span></span></div></div></div><div class="distance" id="distance">—<small>metres remaining</small></div><div class="dest"><span id="destinationLabel">Destination:</span> <strong id="gpsDest">THE ENTRANCE</strong></div><div class="gpsControls"><button class="largeBtn" id="gpsBtn">Enable GPS Compass</button><button class="largeBtn secondary" id="jumpCurrent">Jump to Current Stop</button><button class="largeBtn secondary walkingArrival" id="arrivedBtn">I'm at the stop</button></div><p class="gpsNote" id="gpsNote">Best used outdoors. GPS may drift by 5–20 metres around trees or buildings.</p></section>
   <section class="card"><div class="intro"><div class="stopnum" id="stopNum">STOP 1</div><h2 class="title" id="stopTitle">THE ENTRANCE</h2><p class="subtitle" id="stopSubtitle">Begin your journey</p><button class="begin" id="beginBtn">♛ BEGIN THIS STOP</button><p class="hint" id="beginHint">Tap the gold button to begin the cinematic story. The video opens full screen, then returns you here for AR.</p><div class="storyDone" id="storyDone">✨ Story finished. View the AR scene next. The GPS guide is at the top of the page.</div></div><div class="video locked hidden" id="videoBox"><video id="storyVideo" class="cinematic" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noplaybackrate"></video><div class="videoStatus" id="videoStatus"></div></div></section>
   <section class="section ar"><div class="sectionLabel" id="arLabel">Immersive Experience</div><h2 id="arTitle">Step Into History</h2><p id="arText">Place ancient Tara into the landscape.</p><model-viewer id="modelViewer" camera-controls ar ar-modes="scene-viewer quick-look webxr" alt="Hill of Tara AR scene"></model-viewer><button class="launch" id="launchAR">STEP INTO HISTORY</button><button class="arContinue" id="arContinue">I’VE FINISHED — CONTINUE</button><p class="arPhotoTip"><span id="photoTipMain">📸 Photo tip: when AR opens, tap the screen to show the camera button.</span><small id="photoTipSmall">For group photos, one person can hold the phone while others step into the scene.</small></p></section>
-  <details class="dev" id="developerTools" hidden>
-   <summary id="developerSummary">Developer Tools</summary>
-   <div class="devPanel">
-    <h4 style="margin-top:18px">🎬 Scene testing</h4>
-    <span>Jump directly to any stop without completing the earlier scenes.</span>
-    <div class="devGrid" id="devSceneButtons"></div>
-    <div class="devUtilities">
-     <button class="devUtilityBtn" type="button" id="testCurrentAR">Open current AR scene</button>
-     <button class="devUtilityBtn" type="button" id="testCurrentVideo">Play current video</button>
-    </div>
-    <h4>🌍 Language-pack testing</h4>
-    <span id="developerText">These controls load JSON files from the <strong>lang/</strong> folder without changing the phone language.</span>
-
-    <div class="devGrid" id="devLanguageButtons">
-     <button class="devLangBtn" type="button" data-dev-lang="en">English</button>
-     <button class="devLangBtn" type="button" data-dev-lang="fr">Français</button>
-     <button class="devLangBtn" type="button" data-dev-lang="de">Deutsch</button>
-     <button class="devLangBtn" type="button" data-dev-lang="es">Español</button>
-     <button class="devLangBtn" type="button" data-dev-lang="it">Italiano</button>
-     <button class="devLangBtn" type="button" data-dev-lang="pt">Português</button>
-     <button class="devLangBtn" type="button" data-dev-lang="hi">हिन्दी</button>
-     <button class="devLangBtn" type="button" data-dev-lang="zh">中文</button>
-     <button class="devLangBtn" type="button" data-dev-lang="th">ไทย</button>
-    </div>
-
-    <div class="devUtilities">
-     <button class="devUtilityBtn" type="button" id="testAllLanguagePacks">Test all JSON packs</button>
-     <button class="devUtilityBtn" type="button" id="useDetectedLanguage">Use detected phone language</button>
-     <button class="devUtilityBtn" type="button" id="clearLanguageChoice">Clear saved language</button>
-    </div>
-
-    <div class="devStatus" id="languagePackStatus" role="status" aria-live="polite">Ready to test.</div>
-
-    <div class="devDiagnostics" id="languageDiagnostics">
-     <div><strong>Phone languages:</strong> <span id="diagPhoneLanguages">—</span></div>
-     <div><strong>Detected language:</strong> <span id="diagDetectedLanguage">—</span></div>
-     <div><strong>Active language:</strong> <span id="diagActiveLanguage">—</span></div>
-     <div><strong>Loaded source:</strong> <span id="diagLoadedSource">Embedded English</span></div>
-     <div><strong>Expected JSON path:</strong> <span id="diagPackPath">—</span></div>
-    </div>
-
-    <span class="devHint">Developer Tools are hidden from normal visitors. Open the tour with <strong>?dev</strong> added to the URL, for example <strong>https://fionn1010.github.io/hot1/?dev</strong>.</span>
-    <button class="stop-all" id="stopAll">■ Stop Video</button>
-   </div>
-  </details>
   <div class="nextBlock"><h3 id="nextHeading">NEXT STOP</h3><p id="nextName">The Banqueting Hall</p><button class="nextBtn" id="nextBtn">Continue →</button></div>
+  <section class="dev devBottom" id="developerTools" hidden aria-labelledby="developerHeading">
+   <div class="devHeader">
+    <div>
+     <div class="devEyebrow">PRIVATE TESTING AREA</div>
+     <h2 id="developerHeading">Developer Tools</h2>
+     <p>Open any tour stop immediately, or launch its AR model without completing the earlier scenes.</p>
+    </div>
+    <span class="devBadge">DEV MODE</span>
+   </div>
+
+   <div class="sceneTestList" id="devSceneButtons"></div>
+
+   <div class="devUtilities">
+    <button class="devUtilityBtn" type="button" id="testCurrentVideo">Play current video</button>
+    <button class="devUtilityBtn" type="button" id="testCurrentAR">Launch current AR</button>
+   </div>
+
+   <details class="devAdvanced">
+    <summary>Language-pack testing and diagnostics</summary>
+    <div class="devAdvancedBody">
+     <p id="developerText">These controls load JSON files from the <strong>lang/</strong> folder without changing the phone language.</p>
+
+     <div class="devGrid" id="devLanguageButtons">
+      <button class="devLangBtn" type="button" data-dev-lang="en">English</button>
+      <button class="devLangBtn" type="button" data-dev-lang="fr">Français</button>
+      <button class="devLangBtn" type="button" data-dev-lang="de">Deutsch</button>
+      <button class="devLangBtn" type="button" data-dev-lang="es">Español</button>
+      <button class="devLangBtn" type="button" data-dev-lang="it">Italiano</button>
+      <button class="devLangBtn" type="button" data-dev-lang="pt">Português</button>
+      <button class="devLangBtn" type="button" data-dev-lang="hi">हिन्दी</button>
+      <button class="devLangBtn" type="button" data-dev-lang="zh">中文</button>
+      <button class="devLangBtn" type="button" data-dev-lang="th">ไทย</button>
+     </div>
+
+     <div class="devUtilities">
+      <button class="devUtilityBtn" type="button" id="testAllLanguagePacks">Test all JSON packs</button>
+      <button class="devUtilityBtn" type="button" id="useDetectedLanguage">Use detected phone language</button>
+      <button class="devUtilityBtn" type="button" id="clearLanguageChoice">Clear saved language</button>
+     </div>
+
+     <div class="devStatus" id="languagePackStatus" role="status" aria-live="polite">Ready to test.</div>
+
+     <div class="devDiagnostics" id="languageDiagnostics">
+      <div><strong>Phone languages:</strong> <span id="diagPhoneLanguages">—</span></div>
+      <div><strong>Detected language:</strong> <span id="diagDetectedLanguage">—</span></div>
+      <div><strong>Active language:</strong> <span id="diagActiveLanguage">—</span></div>
+      <div><strong>Loaded source:</strong> <span id="diagLoadedSource">Embedded English</span></div>
+      <div><strong>Expected JSON path:</strong> <span id="diagPackPath">—</span></div>
+     </div>
+    </div>
+   </details>
+
+   <button class="stop-all" id="stopAll">■ Stop Video</button>
+   <p class="devHint">This panel appears only when the address contains <strong>?dev=1</strong>.</p>
+  </section>
  </main>
  <div class="gate-screen" id="gateScreen" role="dialog" aria-modal="true" aria-labelledby="gateTitle"><div class="gate-card"><div class="gate-crown">♛</div><h2 id="gateTitle">Welcome to<br>the Hill of Tara</h2><p id="gateIntro">Seat of the High Kings of Ireland. The King's Path begins at the Entrance.</p><div class="gate-language"><label for="gateLanguageSelect" id="gateLanguageLabel">Language</label><select class="languageSelect" id="gateLanguageSelect" aria-label="Tour language"></select></div><div class="gate-actions" id="gateActions"><button class="gate-btn primary" id="startEntrance">Begin at the Entrance</button><button class="gate-btn secondary" id="resumeTour" style="display:none">Resume previous stop</button><button class="gate-btn ghost" id="jumpNearest">Jump to my current location</button></div><span class="gate-small" id="gateNote">For the full story, start at the Entrance. If you are already at another stop, use GPS to jump nearby.</span></div></div>
  <div class="cinemaOverlay" id="cinemaOverlay" aria-live="polite"><div class="cinemaCard"><div class="cinemaKnot">☘</div><div class="cinemaTitle" id="cinemaTitle">The story has been told.</div><p class="cinemaText" id="cinemaText">Now step into the world of the High King.</p><button class="cinemaAction" id="transitionAR">STEP INTO HISTORY</button></div></div>

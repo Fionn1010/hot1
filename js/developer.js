@@ -31,41 +31,90 @@ function initialiseDeveloperTools(){
 }
 
 
+function goToDeveloperScene(index, target="scene"){
+ current=Math.max(0,Math.min(index,STOPS.length-1));
+ savedStop=current;
+ localStorage.setItem("taraStop",current);
+ hideGate();
+
+ if(target==="ar"){
+  renderStop(false,"AR_READY");
+  requestAnimationFrame(()=>{
+   document.querySelector(".section.ar")?.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  return;
+ }
+
+ renderStop(false,"ARRIVED");
+ requestAnimationFrame(()=>{
+  document.querySelector(".card")?.scrollIntoView({behavior:"smooth",block:"start"});
+ });
+}
+
+async function launchDeveloperAR(index){
+ goToDeveloperScene(index,"ar");
+ await new Promise(resolve=>setTimeout(resolve,250));
+ await launchCurrentAR();
+}
+
 function initialiseSceneTesting(){
  const holder=$("devSceneButtons");
  if(!holder) return;
  holder.innerHTML="";
+
  STOPS.forEach((stop,index)=>{
-  const button=document.createElement("button");
-  button.type="button";
-  button.className="devLangBtn";
-  button.textContent=`${index+1}. ${stop.title.replace(/^THE /,"")}`;
-  button.addEventListener("click",()=>{
-   current=index;
-   savedStop=index;
-   renderStop(false);
-   hideGate();
-   document.querySelector(".section.ar")?.scrollIntoView({behavior:"smooth",block:"start"});
-   updateSceneTestingButtons();
-  });
-  holder.appendChild(button);
+  const row=document.createElement("article");
+  row.className="sceneTestRow";
+  row.dataset.sceneIndex=String(index);
+
+  const info=document.createElement("div");
+  info.className="sceneTestInfo";
+
+  const number=document.createElement("span");
+  number.className="sceneTestNumber";
+  number.textContent=String(index+1);
+
+  const name=document.createElement("div");
+  name.className="sceneTestName";
+  name.innerHTML=`<strong>${stop.title}</strong><small>${stop.model||"No AR model configured"}</small>`;
+
+  info.append(number,name);
+
+  const actions=document.createElement("div");
+  actions.className="sceneTestActions";
+
+  const sceneButton=document.createElement("button");
+  sceneButton.type="button";
+  sceneButton.className="devSceneBtn";
+  sceneButton.textContent="Open scene";
+  sceneButton.addEventListener("click",()=>goToDeveloperScene(index,"scene"));
+
+  const arButton=document.createElement("button");
+  arButton.type="button";
+  arButton.className="devArBtn";
+  arButton.textContent=stop.model?"Launch AR":"No AR model";
+  arButton.disabled=!stop.model;
+  arButton.addEventListener("click",()=>launchDeveloperAR(index));
+
+  actions.append(sceneButton,arButton);
+  row.append(info,actions);
+  holder.appendChild(row);
  });
+
  $("testCurrentAR")?.addEventListener("click",async()=>{
-  hideGate();
-  document.querySelector(".section.ar")?.scrollIntoView({behavior:"smooth",block:"start"});
-  await launchCurrentAR();
+  await launchDeveloperAR(current);
  });
  $("testCurrentVideo")?.addEventListener("click",()=>{
-  hideGate();
+  goToDeveloperScene(current,"scene");
   storyCompletionHandled=false;
-  openStoryCinema();
+  setTimeout(openStoryCinema,180);
  });
  updateSceneTestingButtons();
 }
 
 function updateSceneTestingButtons(){
- document.querySelectorAll("#devSceneButtons button").forEach((button,index)=>{
-  button.classList.toggle("active",index===current);
+ document.querySelectorAll("#devSceneButtons .sceneTestRow").forEach((row,index)=>{
+  row.classList.toggle("active",index===current);
  });
 }
 

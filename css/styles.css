@@ -48,3 +48,38 @@
  .preloadStatus{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:75;display:none;max-width:640px;margin:auto;padding:12px 16px;border-radius:18px;background:rgba(18,15,10,.94);color:#fff6df;box-shadow:0 12px 34px rgba(0,0,0,.3);font-size:14px;font-weight:800;text-align:center}
  .preloadStatus.show{display:block}
  .preloadStatus strong{color:#f0cb77}
+
+
+/* Bottom developer scene launcher */
+.devBottom{
+ margin-top:34px!important;
+ margin-bottom:40px!important;
+ padding:18px!important;
+ border:2px solid #c89b31!important;
+ background:linear-gradient(180deg,#f8f0dd,#eee0bd)!important;
+ box-shadow:0 18px 44px rgba(62,42,11,.16);
+}
+.devHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}
+.devHeader h2{font-family:Cinzel,serif;margin:2px 0 5px;font-size:clamp(26px,7vw,38px);color:#2d2417}
+.devHeader p{margin:0;color:#65583f;line-height:1.45}
+.devEyebrow{font-size:12px;letter-spacing:.14em;font-weight:900;color:#8a651c}
+.devBadge{flex:0 0 auto;border-radius:999px;padding:8px 10px;background:#17130d;color:#f2ca6e;font-size:11px;font-weight:900;letter-spacing:.09em}
+.sceneTestList{display:grid;gap:10px}
+.sceneTestRow{display:grid;gap:11px;padding:12px;border:1px solid #d9c48d;border-radius:16px;background:#fffaf0}
+.sceneTestRow.active{border-color:#2d6a43;box-shadow:0 0 0 3px rgba(45,106,67,.12)}
+.sceneTestInfo{display:flex;align-items:center;gap:11px;min-width:0}
+.sceneTestNumber{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border-radius:999px;background:#292116;color:#f1cb72;font-weight:900}
+.sceneTestName{min-width:0}
+.sceneTestName strong{display:block;color:#2b2317;font-size:16px}
+.sceneTestName small{display:block;margin-top:3px;color:#77684d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sceneTestActions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.devSceneBtn,.devArBtn{min-height:48px;border-radius:12px;font:inherit;font-weight:900;cursor:pointer}
+.devSceneBtn{border:1px solid #b79548;background:#fff;color:#332817}
+.devArBtn{border:0;background:linear-gradient(180deg,#d9ad43,#a87918);color:white}
+.devArBtn:disabled{opacity:.45;cursor:not-allowed}
+.devAdvanced{margin-top:16px;border-top:1px solid #ceb87e;padding-top:12px}
+.devAdvanced summary{cursor:pointer;font-weight:900;color:#3b2e1b}
+.devAdvancedBody{padding-top:12px}
+@media(min-width:720px){
+ .sceneTestRow{grid-template-columns:minmax(0,1fr) 300px;align-items:center}
+}

@@ -7,6 +7,8 @@ async function initialiseFionn(){
  renderStop(false);
  showGateOptions();
  initialiseDeveloperTools();
+ initialiseSceneTesting();
  applyDirectTestStop();
+ updateSceneTestingButtons();
 }
 initialiseFionn();
