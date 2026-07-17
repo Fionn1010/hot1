@@ -5,7 +5,7 @@
  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
  <title>Hill of Tara · Royal Heritage Experience</title>
  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+ <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
  <style>
  :root{--cream:#fbf6ea;--paper:#fffdf7;--gold:#c7962a;--gold2:#ddb04a;--line:#e7dcc7;--text:#171717;--muted:#655d52;--red:#7d1b22;--dark:#17120b;--green:#27492f}
  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);font-family:Inter,system-ui,sans-serif;color:var(--text)}button{font:inherit}.page{max-width:920px;margin:0 auto;background:var(--cream);min-height:100vh;padding-bottom:22px}
@@ -69,6 +69,13 @@
   <details class="dev" id="developerTools" hidden>
    <summary id="developerSummary">Developer Tools</summary>
    <div class="devPanel">
+    <h4 style="margin-top:18px">🎬 Scene testing</h4>
+    <span>Jump directly to any stop without completing the earlier scenes.</span>
+    <div class="devGrid" id="devSceneButtons"></div>
+    <div class="devUtilities">
+     <button class="devUtilityBtn" type="button" id="testCurrentAR">Open current AR scene</button>
+     <button class="devUtilityBtn" type="button" id="testCurrentVideo">Play current video</button>
+    </div>
     <h4>🌍 Language-pack testing</h4>
     <span id="developerText">These controls load JSON files from the <strong>lang/</strong> folder without changing the phone language.</span>
 
@@ -139,7 +146,7 @@ const UI={
  pt:{name:"Português",locale:"pt",heroTagline:"SEDE DOS ALTOS REIS",language:"Idioma",gpsTitle:"Percurso GPS",gpsSubtitle:"Siga o Caminho do Rei",destination:"Destino:",enableGps:"Ativar bússola GPS",gpsActive:"Bússola GPS ativa",jumpCurrent:"Ir para a paragem atual",gpsNote:"É melhor usar ao ar livre. O GPS pode variar entre 5 e 20 metros perto de árvores ou edifícios.",stop:"PARAGEM",beginDefault:"♛ INICIAR ESTA PARAGEM",beginHint:"Toque no botão dourado para iniciar a história. O vídeo abre em ecrã inteiro e depois regressa aqui para a RA.",storyDone:"✨ História concluída. Veja agora a cena em RA. O guia GPS está no topo da página.",arLabel:"Experiência de RA",arTitle:"Ver em RA",arText:"Coloque a antiga Tara na paisagem.",launchAr:"INICIAR RA",arSoon:"RA EM BREVE",photoMain:"📸 Dica de fotografia: quando a RA abrir, toque no ecrã para mostrar o botão da câmara.",photoSmall:"Para fotografias de grupo, uma pessoa segura o telefone enquanto as outras entram na cena.",nextStop:"PRÓXIMA PARAGEM",continue:"Continuar →",finishTour:"TERMINAR VISITA",finishButton:"Terminar visita",farewell:"Reproduzir a mensagem de despedida e agradecimento",welcome:"Bem-vindo à<br>Colina de Tara",gateIntro:"Sede dos Altos Reis da Irlanda. O Caminho do Rei começa na entrada.",startEntrance:"Começar na entrada",resume:"Retomar a paragem anterior",jumpNearest:"Ir para a minha localização atual",gateNote:"Para seguir toda a história, comece na entrada. Se já estiver noutra paragem, utilize o GPS.",metres:"metros restantes",checking:"A verificar a sua localização…",gpsUnavailable:"O GPS não está disponível neste dispositivo.",locationUnavailable:"Não foi possível obter a localização. Ainda pode começar na entrada.",locationNeeded:"É necessário acesso à localização para a bússola.",enableFirst:"Ative primeiro o GPS para encontrar a paragem mais próxima.",storyComplete:"✓ HISTÓRIA CONCLUÍDA",pathContinues:"O Caminho do Rei continua",storyCompleteTitle:"A história terminou",nextLabel:"Próxima paragem:",thanksWalk:"Obrigado por percorrer a Colina de Tara.",compassContinue:"Use a bússola no topo para continuar",toNext:"até à próxima paragem",returnStart:"Voltar ao início",discoverMeath:"Descobrir Meath",thanks:"Obrigado",stopVideo:"■ Parar vídeo"},
  zh:{name:"中文",locale:"zh",heroTagline:"爱尔兰至高王之地",language:"语言",gpsTitle:"GPS 导览",gpsSubtitle:"沿着国王之路前行",destination:"目的地：",enableGps:"启用 GPS 指南针",gpsActive:"GPS 指南针已启用",jumpCurrent:"前往当前站点",gpsNote:"建议在户外使用。树木或建筑附近的 GPS 可能会偏移 5–20 米。",stop:"第",beginDefault:"♛ 开始此站",beginHint:"点击金色按钮开始故事。视频将全屏播放，之后返回此页面体验增强现实。",storyDone:"✨ 故事已结束。接下来查看增强现实场景。GPS 导览位于页面顶部。",arLabel:"增强现实体验",arTitle:"在 AR 中查看",arText:"将古代塔拉呈现在真实景观中。",launchAr:"启动 AR",arSoon:"AR 即将推出",photoMain:"📸 拍照提示：AR 打开后，点击屏幕即可显示相机按钮。",photoSmall:"拍摄合照时，可由一人拿手机，其他人走进场景。",nextStop:"下一站",continue:"继续 →",finishTour:"结束导览",finishButton:"结束导览",farewell:"播放告别与感谢信息",welcome:"欢迎来到<br>塔拉山",gateIntro:"这里是爱尔兰至高王之地。国王之路从入口开始。",startEntrance:"从入口开始",resume:"继续上一站",jumpNearest:"前往我的当前位置",gateNote:"要体验完整故事，请从入口开始。如果您已经在其他站点，可使用 GPS 定位附近站点。",metres:"米剩余",checking:"正在检查您的位置…",gpsUnavailable:"此设备不支持 GPS。",locationUnavailable:"无法获取位置。您仍可从入口开始。",locationNeeded:"指南针需要位置权限。",enableFirst:"请先启用 GPS，以查找最近的站点。",storyComplete:"✓ 故事已完成",pathContinues:"国王之路继续",storyCompleteTitle:"故事已经结束",nextLabel:"下一站：",thanksWalk:"感谢您游览塔拉山。",compassContinue:"使用页面顶部的指南针继续",toNext:"到下一站",returnStart:"返回起点",discoverMeath:"探索米斯郡",thanks:"谢谢",stopVideo:"■ 停止视频"},
  hi:{name:"हिन्दी",locale:"hi",heroTagline:"आयरलैंड के उच्च राजाओं का आसन",language:"भाषा",gpsTitle:"GPS यात्रा",gpsSubtitle:"राजा के मार्ग का अनुसरण करें",destination:"गंतव्य:",enableGps:"GPS कम्पास चालू करें",gpsActive:"GPS कम्पास सक्रिय",jumpCurrent:"वर्तमान पड़ाव पर जाएँ",gpsNote:"बाहर उपयोग करना सर्वोत्तम है। पेड़ों या इमारतों के पास GPS 5–20 मीटर तक भटक सकता है।",stop:"पड़ाव",beginDefault:"♛ यह पड़ाव शुरू करें",beginHint:"कहानी शुरू करने के लिए सुनहरा बटन दबाएँ। वीडियो पूर्ण स्क्रीन में खुलेगा और फिर AR के लिए यहाँ लौटेगा।",storyDone:"✨ कहानी समाप्त हुई। अब AR दृश्य देखें। GPS मार्गदर्शक पृष्ठ के ऊपर है।",arLabel:"AR अनुभव",arTitle:"AR में देखें",arText:"प्राचीन तारा को वास्तविक परिदृश्य में रखें।",launchAr:"AR शुरू करें",arSoon:"AR जल्द आ रहा है",photoMain:"📸 फोटो सुझाव: AR खुलने पर कैमरा बटन दिखाने के लिए स्क्रीन पर टैप करें।",photoSmall:"समूह फोटो के लिए एक व्यक्ति फोन पकड़े और बाकी लोग दृश्य में खड़े हों।",nextStop:"अगला पड़ाव",continue:"आगे बढ़ें →",finishTour:"यात्रा समाप्त करें",finishButton:"यात्रा समाप्त करें",farewell:"विदाई और धन्यवाद संदेश चलाएँ",welcome:"तारा की पहाड़ी पर<br>आपका स्वागत है",gateIntro:"आयरलैंड के उच्च राजाओं का आसन। राजा का मार्ग प्रवेश द्वार से शुरू होता है।",startEntrance:"प्रवेश द्वार से शुरू करें",resume:"पिछला पड़ाव जारी रखें",jumpNearest:"मेरे वर्तमान स्थान पर जाएँ",gateNote:"पूरी कहानी के लिए प्रवेश द्वार से शुरू करें। यदि आप किसी अन्य पड़ाव पर हैं, तो GPS का उपयोग करें।",metres:"मीटर शेष",checking:"आपका स्थान जाँचा जा रहा है…",gpsUnavailable:"इस उपकरण पर GPS उपलब्ध नहीं है।",locationUnavailable:"स्थान उपलब्ध नहीं था। फिर भी आप प्रवेश द्वार से शुरू कर सकते हैं।",locationNeeded:"कम्पास के लिए स्थान की अनुमति आवश्यक है।",enableFirst:"निकटतम पड़ाव खोजने के लिए पहले GPS चालू करें।",storyComplete:"✓ कहानी पूरी हुई",pathContinues:"राजा का मार्ग जारी है",storyCompleteTitle:"कहानी पूरी हो गई",nextLabel:"अगला पड़ाव:",thanksWalk:"तारा की पहाड़ी की यात्रा के लिए धन्यवाद।",compassContinue:"जारी रखने के लिए ऊपर दिए कम्पास का उपयोग करें",toNext:"अगले पड़ाव तक",returnStart:"शुरुआत पर लौटें",discoverMeath:"मीथ की खोज करें",thanks:"धन्यवाद",stopVideo:"■ वीडियो रोकें"},
- th:{"name":"ไทย","locale":"th","heroTagline":"ที่ประทับของกษัตริย์สูงสุดแห่งไอร์แลนด์","language":"ภาษา","gpsTitle":"การเดินทางด้วย GPS","gpsSubtitle":"เดินตามเส้นทางของกษัตริย์","destination":"จุดหมาย:","enableGps":"เปิดเข็มทิศ GPS","gpsActive":"เข็มทิศ GPS ทำงานแล้ว","jumpCurrent":"ไปยังจุดแวะปัจจุบัน","gpsNote":"เหมาะสำหรับใช้งานกลางแจ้ง GPS อาจคลาดเคลื่อน 5–20 เมตรใกล้ต้นไม้หรืออาคาร","stop":"จุดแวะ","beginDefault":"♛ เริ่มจุดแวะนี้","beginHint":"แตะปุ่มสีทองเพื่อเริ่มเรื่องราวแบบภาพยนตร์ วิดีโอจะเปิดเต็มหน้าจอ แล้วกลับมาที่นี่เพื่อสัมผัส AR","storyDone":"✨ เรื่องราวจบแล้ว ต่อไปเข้าสู่ฉาก AR","arLabel":"ประสบการณ์ AR","arTitle":"ชมใน AR","arText":"นำทาราในอดีตกลับมาสู่ภูมิทัศน์จริง","launchAr":"เริ่ม AR","arSoon":"AR จะเปิดให้ใช้เร็ว ๆ นี้","photoMain":"📸 เคล็ดลับถ่ายภาพ: เมื่อ AR เปิดขึ้น ให้แตะหน้าจอเพื่อแสดงปุ่มกล้อง","photoSmall":"สำหรับภาพหมู่ ให้คนหนึ่งถือโทรศัพท์และให้คนอื่นเข้าไปยืนในฉาก","nextStop":"จุดแวะถัดไป","continue":"ดำเนินต่อ →","finishTour":"จบทัวร์","finishButton":"จบทัวร์","farewell":"เล่นข้อความอำลาและขอบคุณ","welcome":"ยินดีต้อนรับสู่<br>เนินเขาทารา","gateIntro":"ที่ประทับของกษัตริย์สูงสุดแห่งไอร์แลนด์ เส้นทางของกษัตริย์เริ่มต้นที่ทางเข้า","startEntrance":"เริ่มที่ทางเข้า","resume":"กลับไปยังจุดแวะก่อนหน้า","jumpNearest":"ไปยังตำแหน่งปัจจุบันของฉัน","gateNote":"เพื่อรับฟังเรื่องราวทั้งหมด โปรดเริ่มที่ทางเข้า หากคุณอยู่ใกล้จุดแวะอื่นแล้ว ให้ใช้ GPS","metres":"เมตรที่เหลือ","checking":"กำลังตรวจสอบตำแหน่งของคุณ…","gpsUnavailable":"อุปกรณ์นี้ไม่รองรับ GPS","locationUnavailable":"ไม่สามารถเข้าถึงตำแหน่งได้ คุณยังสามารถเริ่มที่ทางเข้าได้","locationNeeded":"ต้องอนุญาตการเข้าถึงตำแหน่งเพื่อใช้เข็มทิศ","enableFirst":"โปรดเปิด GPS ก่อน เพื่อค้นหาจุดแวะที่ใกล้ที่สุด","storyComplete":"✓ เรื่องราวเสร็จสมบูรณ์","pathContinues":"เส้นทางของกษัตริย์ดำเนินต่อไป","storyCompleteTitle":"เรื่องราวจบแล้ว","nextLabel":"จุดแวะถัดไป:","thanksWalk":"ขอบคุณที่ร่วมเดินทางบนเนินเขาทารา","compassContinue":"ใช้เข็มทิศด้านบนเพื่อเดินทางต่อ","toNext":"ไปยังจุดแวะถัดไป","returnStart":"กลับไปจุดเริ่มต้น","discoverMeath":"ค้นพบมีธ","thanks":"ขอบคุณ","stopVideo":"■ หยุดวิดีโอ","storyTold":"เรื่องราวได้ถูกถ่ายทอดแล้ว","enterHighKingWorld":"ตอนนี้ ก้าวเข้าสู่โลกของกษัตริย์สูงสุด","stepIntoHistory":"ก้าวเข้าสู่ประวัติศาสตร์","excellent":"ยอดเยี่ยม","stoodWhereKing":"คุณได้ยืนอยู่ในสถานที่เดียวกับที่กษัตริย์สูงสุดเคยยืน","finishedContinue":"ฉันชมเสร็จแล้ว — ดำเนินต่อ"}}
+ th:{"name":"ไทย","locale":"th","heroTagline":"ที่ประทับของกษัตริย์สูงสุดแห่งไอร์แลนด์","language":"ภาษา","gpsTitle":"การเดินทางด้วย GPS","gpsSubtitle":"เดินตามเส้นทางของกษัตริย์","destination":"จุดหมาย:","enableGps":"เปิดเข็มทิศ GPS","gpsActive":"เข็มทิศ GPS ทำงานแล้ว","jumpCurrent":"ไปยังจุดแวะปัจจุบัน","gpsNote":"เหมาะสำหรับใช้งานกลางแจ้ง GPS อาจคลาดเคลื่อน 5–20 เมตรใกล้ต้นไม้หรืออาคาร","stop":"จุดแวะ","beginDefault":"♛ เริ่มจุดแวะนี้","beginHint":"แตะปุ่มสีทองเพื่อเริ่มเรื่องราวแบบภาพยนตร์ วิดีโอจะเปิดเต็มหน้าจอ แล้วกลับมาที่นี่เพื่อสัมผัส AR","storyDone":"✨ เรื่องราวจบแล้ว ต่อไปเข้าสู่ฉาก AR","arLabel":"ประสบการณ์ AR","arTitle":"ชมใน AR","arText":"นำทาราในอดีตกลับมาสู่ภูมิทัศน์จริง","launchAr":"เริ่ม AR","arSoon":"AR จะเปิดให้ใช้เร็ว ๆ นี้","photoMain":"📸 เคล็ดลับถ่ายภาพ: เมื่อ AR เปิดขึ้น ให้แตะหน้าจอเพื่อแสดงปุ่มกล้อง","photoSmall":"สำหรับภาพหมู่ ให้คนหนึ่งถือโทรศัพท์และให้คนอื่นเข้าไปยืนในฉาก","nextStop":"จุดแวะถัดไป","continue":"ดำเนินต่อ →","finishTour":"จบทัวร์","finishButton":"จบทัวร์","farewell":"เล่นข้อความอำลาและขอบคุณ","welcome":"ยินดีต้อนรับสู่<br>เนินเขาทารา","gateIntro":"ที่ประทับของกษัตริย์สูงสุดแห่งไอร์แลนด์ เส้นทางของกษัตริย์เริ่มต้นที่ทางเข้า","startEntrance":"เริ่มที่ทางเข้า","resume":"กลับไปยังจุดแวะก่อนหน้า","jumpNearest":"ไปยังตำแหน่งปัจจุบันของฉัน","gateNote":"เพื่อรับฟังเรื่องราวทั้งหมด โปรดเริ่มที่ทางเข้า หากคุณอยู่ใกล้จุดแวะอื่นแล้ว ให้ใช้ GPS","metres":"เมตรที่เหลือ","checking":"กำลังตรวจสอบตำแหน่งของคุณ…","gpsUnavailable":"อุปกรณ์นี้ไม่รองรับ GPS","locationUnavailable":"ไม่สามารถเข้าถึงตำแหน่งได้ คุณยังสามารถเริ่มที่ทางเข้าได้","locationNeeded":"ต้องอนุญาตการเข้าถึงตำแหน่งเพื่อใช้เข็มทิศ","enableFirst":"โปรดเปิด GPS ก่อน เพื่อค้นหาจุดแวะที่ใกล้ที่สุด","storyComplete":"✓ เรื่องราวเสร็จสมบูรณ์","pathContinues":"เส้นทางของกษัตริย์ดำเนินต่อไป","storyCompleteTitle":"เรื่องราวจบแล้ว","nextLabel":"จุดแวะถัดไป:","thanksWalk":"ขอบคุณที่ร่วมเดินทางบนเนินเขาทารา","compassContinue":"ใช้เข็มทิศด้านบนเพื่อเดินทางต่อ","toNext":"ไปยังจุดแวะถัดไป","returnStart":"กลับไปจุดเริ่มต้น","discoverMeath":"ค้นพบมีธ","thanks":"ขอบคุณ","stopVideo":"■ หยุดวิดีโอ","storyTold":"เรื่องราวได้ถูกถ่ายทอดแล้ว","enterHighKingWorld":"ตอนนี้ ก้าวเข้าสู่โลกของกษัตริย์สูงสุด","stepIntoHistory":"ก้าวเข้าสู่ประวัติศาสตร์","excellent":"ยอดเยี่ยม","stoodWhereKing":"คุณได้ยืนอยู่ในสถานที่เดียวกับที่กษัตริย์สูงสุดเคยยืน","finishedContinue":"ฉันชมเสร็จแล้ว — ดำเนินต่อ"}
 };
 const STOP_I18N={
  en:[
@@ -271,6 +278,7 @@ function setLanguage(code){
  renderStop(false);
  showGateOptions();
  updateLanguageDiagnostics();
+ initialiseSceneTesting();
 }
 function applyTranslations(){
  const t=UI[currentLanguage]||UI.en;
@@ -320,6 +328,59 @@ function initialiseDeveloperTools(){
   updateLanguageDiagnostics();
  });
  updateLanguageDiagnostics();
+}
+
+
+function initialiseSceneTesting(){
+ const holder=$("devSceneButtons");
+ if(!holder) return;
+ holder.innerHTML="";
+ STOPS.forEach((stop,index)=>{
+  const button=document.createElement("button");
+  button.type="button";
+  button.className="devLangBtn";
+  button.textContent=`${index+1}. ${stop.title.replace(/^THE /,"")}`;
+  button.addEventListener("click",()=>{
+   current=index;
+   savedStop=index;
+   renderStop(false);
+   hideGate();
+   document.querySelector(".section.ar")?.scrollIntoView({behavior:"smooth",block:"start"});
+   updateSceneTestingButtons();
+  });
+  holder.appendChild(button);
+ });
+ $("testCurrentAR")?.addEventListener("click",async()=>{
+  hideGate();
+  document.querySelector(".section.ar")?.scrollIntoView({behavior:"smooth",block:"start"});
+  await launchCurrentAR();
+ });
+ $("testCurrentVideo")?.addEventListener("click",()=>{
+  hideGate();
+  storyCompletionHandled=false;
+  openStoryCinema();
+ });
+ updateSceneTestingButtons();
+}
+
+function updateSceneTestingButtons(){
+ document.querySelectorAll("#devSceneButtons button").forEach((button,index)=>{
+  button.classList.toggle("active",index===current);
+ });
+}
+
+function applyDirectTestStop(){
+ if(!devModeEnabled()) return;
+ const params=new URLSearchParams(window.location.search);
+ const raw=params.get("stop") || params.get("scene");
+ if(!raw) return;
+ const requested=Number.parseInt(raw,10);
+ if(Number.isFinite(requested)){
+  current=Math.max(0,Math.min(requested-1,STOPS.length-1));
+  savedStop=current;
+  renderStop(false);
+  hideGate();
+ }
 }
 
 function expectedPackPath(code){
@@ -519,12 +580,51 @@ function beginWalkingToNext(){
  if(current===STOPS.length-1){showEnd();return}
  current++;renderStop(false,'WALKING');window.scrollTo({top:0,behavior:'smooth'});
 }
-function launchCurrentAR(){
- $('cinemaOverlay').classList.remove('show');setTourMode('AR_READY');arWasLaunched=true;arSessionStarted=false;
- $('arContinue').classList.add('show');setTimeout(async()=>{try{if(model.activateAR)await model.activateAR()}catch(e){}},80);
+async function ensureCurrentModel(){
+ const stop=STOPS[current];
+ if(!stop.model) throw new Error('No AR model is configured for this stop.');
+ const wanted=modelPath(stop.model);
+ model.style.display='block';
+ if(model.getAttribute('src')!==wanted){
+  model.setAttribute('src',wanted);
+ }
+ await customElements.whenDefined('model-viewer');
+ if(model.updateComplete) await model.updateComplete;
+ if(model.loaded) return;
+ await new Promise((resolve,reject)=>{
+  const timer=setTimeout(()=>reject(new Error('The AR model took too long to load.')),30000);
+  const done=()=>{clearTimeout(timer);cleanup();resolve()};
+  const fail=()=>{clearTimeout(timer);cleanup();reject(new Error('The AR model could not be loaded.'))};
+  const cleanup=()=>{model.removeEventListener('load',done);model.removeEventListener('error',fail)};
+  model.addEventListener('load',done,{once:true});
+  model.addEventListener('error',fail,{once:true});
+ });
+}
+async function launchCurrentAR(){
+ $('cinemaOverlay').classList.remove('show');
+ setTourMode('AR_READY');
+ arWasLaunched=true;arSessionStarted=false;
+ $('arContinue').classList.add('show');
+ const button=$('launchAR');
+ const original=button.textContent;
+ button.disabled=true;
+ button.textContent='LOADING AR…';
+ try{
+  await ensureCurrentModel();
+  button.textContent=original;
+  button.disabled=false;
+  if(typeof model.activateAR!=='function') throw new Error('AR is not supported by this browser.');
+  await model.activateAR();
+ }catch(error){
+  console.error('AR launch failed:',error);
+  button.textContent=original;
+  button.disabled=false;
+  arWasLaunched=false;
+  alert(error.message||'The AR scene could not be opened. Please reload the page and try again.');
+ }
 }
 function showPostAr(){if(!arWasLaunched)return;const t=UI[currentLanguage]||UI.en;arWasLaunched=false;$('postArTitle').textContent=t.excellent||'Excellent.';$('postArText').innerHTML=`${t.stoodWhereKing||'You have stood where the High King once stood.'}<br><br>${t.pathContinues}`;$('continueAfterAR').textContent=t.continue||'CONTINUE';$('postArOverlay').classList.add('show');playSoftChime()}
-function renderStop(scroll=true,mode='ARRIVED'){current=Math.max(0,Math.min(current,STOPS.length-1));localStorage.setItem('taraStop',current);const stop=STOPS[current],ts=translatedStop(current),t=UI[currentLanguage]||UI.en;$('stopNum').textContent=currentLanguage==='zh'?`${t.stop}${current+1}站`:`${t.stop} ${current+1}`;$('stopTitle').textContent=ts.title;$('stopSubtitle').textContent=ts.subtitle;$('gpsDest').textContent=ts.title;$('beginBtn').textContent=ts.action||t.beginDefault;$('beginBtn').classList.remove('story-complete');const chosenVideo=selectedVideoFile(stop,current);setVideo(chosenVideo,chosenVideo!==stop.video?stop.video:'');if(stop.model){model.style.display='block';model.src=modelPath(stop.model);$('launchAR').disabled=false;$('launchAR').textContent=t.stepIntoHistory||UI.en.stepIntoHistory}else{model.removeAttribute('src');model.style.display='none';$('launchAR').disabled=true;$('launchAR').textContent=t.arSoon}$('videoBox').classList.add('locked','hidden');$('storyDone').classList.remove('show');if(current===STOPS.length-1){$('nextHeading').textContent=t.finishTour;$('nextName').textContent=t.farewell;$('nextBtn').textContent=t.finishButton;$('nextBtn').className='nextBtn finish'}else{$('nextHeading').textContent=t.nextStop;$('nextName').textContent=translatedStop(current+1).title;$('nextBtn').textContent=t.continue;$('nextBtn').className='nextBtn'}arrivalAnnounced=false;arWasLaunched=false;arSessionStarted=false;$('arContinue').classList.remove('show');setTourMode(mode);updateCompass();if(scroll)window.scrollTo({top:0,behavior:'smooth'})}
+function renderStop(scroll=true,mode='ARRIVED'){current=Math.max(0,Math.min(current,STOPS.length-1));localStorage.setItem('taraStop',current);const stop=STOPS[current],ts=translatedStop(current),t=UI[currentLanguage]||UI.en;$('stopNum').textContent=currentLanguage==='zh'?`${t.stop}${current+1}站`:`${t.stop} ${current+1}`;$('stopTitle').textContent=ts.title;$('stopSubtitle').textContent=ts.subtitle;$('gpsDest').textContent=ts.title;$('beginBtn').textContent=ts.action||t.beginDefault;$('beginBtn').classList.remove('story-complete');const chosenVideo=selectedVideoFile(stop,current);setVideo(chosenVideo,chosenVideo!==stop.video?stop.video:'');if(stop.model){model.style.display='block';model.src=modelPath(stop.model);$('launchAR').disabled=false;$('launchAR').textContent=t.stepIntoHistory||UI.en.stepIntoHistory}else{model.removeAttribute('src');model.style.display='none';$('launchAR').disabled=true;$('launchAR').textContent=t.arSoon}$('videoBox').classList.add('locked','hidden');$('storyDone').classList.remove('show');if(current===STOPS.length-1){$('nextHeading').textContent=t.finishTour;$('nextName').textContent=t.farewell;$('nextBtn').textContent=t.finishButton;$('nextBtn').className='nextBtn finish'}else{$('nextHeading').textContent=t.nextStop;$('nextName').textContent=translatedStop(current+1).title;$('nextBtn').textContent=t.continue;$('nextBtn').className='nextBtn'}arrivalAnnounced=false;arWasLaunched=false;arSessionStarted=false;$('arContinue').classList.remove('show');setTourMode(mode);updateCompass();updateSceneTestingButtons();if(scroll)window.scrollTo({top:0,behavior:'smooth'})}
 async function openStoryCinema(){
  const status=$('videoStatus');
  status.classList.remove('show');
@@ -567,8 +667,23 @@ async function openStoryCinema(){
 function closeStoryCinema(){if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});try{if(video.webkitExitFullscreen)video.webkitExitFullscreen()}catch(e){}video.pause();video.currentTime=0;video.removeAttribute('controls');$('videoBox').classList.add('locked','hidden')}
 function playSoftChime(){try{const AudioCtx=window.AudioContext||window.webkitAudioContext,ctx=new AudioCtx();[523.25,659.25,783.99].forEach((freq,i)=>{const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.setValueAtTime(0,ctx.currentTime+i*.12);gain.gain.linearRampToValueAtTime(.055,ctx.currentTime+i*.12+.025);gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+i*.12+.55);osc.connect(gain);gain.connect(ctx.destination);osc.start(ctx.currentTime+i*.12);osc.stop(ctx.currentTime+i*.12+.6)})}catch(e){}}
 function showCinemaTransition(){const t=UI[currentLanguage]||UI.en;$('cinemaTitle').textContent=t.storyTold||'The story has been told.';$('cinemaText').textContent=t.enterHighKingWorld||'Now step into the world of the High King.';$('transitionAR').textContent=t.stepIntoHistory||'STEP INTO HISTORY';$('cinemaOverlay').classList.add('show');playSoftChime()}
-function completeStory(){closeStoryCinema();$('storyDone').classList.add('show');$('beginBtn').textContent=(UI[currentLanguage]||UI.en).storyComplete;$('beginBtn').classList.add('story-complete');showCinemaTransition()}
-$('startEntrance').addEventListener('click',chooseEntrance);$('resumeTour').addEventListener('click',chooseResume);$('jumpNearest').addEventListener('click',chooseNearestStop);$('beginBtn').addEventListener('click',openStoryCinema);video.addEventListener('ended',completeStory);video.addEventListener('error',()=>{
+let storyCompletionHandled=false;
+function completeStory(){
+ if(storyCompletionHandled)return;
+ storyCompletionHandled=true;
+ closeStoryCinema();
+ $('storyDone').classList.add('show');
+ $('beginBtn').textContent=(UI[currentLanguage]||UI.en).storyComplete;
+ $('beginBtn').classList.add('story-complete');
+ showCinemaTransition();
+}
+function finishStoryPlayback(){
+ video.pause();
+ try{if(video.webkitDisplayingFullscreen&&video.webkitExitFullscreen)video.webkitExitFullscreen()}catch(e){}
+ if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+ setTimeout(completeStory,180);
+}
+$('startEntrance').addEventListener('click',chooseEntrance);$('resumeTour').addEventListener('click',chooseResume);$('jumpNearest').addEventListener('click',chooseNearestStop);$('beginBtn').addEventListener('click',()=>{storyCompletionHandled=false;openStoryCinema()});video.addEventListener('ended',finishStoryPlayback);video.addEventListener('webkitendfullscreen',()=>{if(video.ended)completeStory()});video.addEventListener('error',()=>{
  const fallback=video.dataset.fallback;
  if(fallback && video.dataset.fallbackUsed!=='true'){
   video.dataset.fallbackUsed='true';
@@ -709,6 +824,7 @@ async function initialiseFionn(){
  renderStop(false);
  showGateOptions();
  initialiseDeveloperTools();
+ applyDirectTestStop();
 }
 initialiseFionn();
 </script>
