@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "naming": {
+    "lite": "<name>-lite.glb",
+    "standard": "<name>.glb",
+    "enhanced": "<name>-enhanced.glb"
+  },
+  "notes": "The engine checks for the requested variant and automatically falls back to the current standard model. Existing models require no renaming. Add Lite and Enhanced files gradually."
+}
