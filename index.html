@@ -156,6 +156,16 @@
         <label for="gateLanguageSelect" id="gateLanguageLabel">Language</label>
         <select class="languageSelect" id="gateLanguageSelect" aria-label="Tour language"></select>
       </div>
+      <div class="tour-mode" id="tourMode">
+        <h3 style="margin:0 0 10px;">Choose Your Tour</h3>
+        <button class="gate-btn primary" id="fullTourMode">🏰 Full GPS Tour</button>
+        <button class="gate-btn secondary" id="parkTourMode">🌳 Walk in the Park (Developer Mode)</button>
+        <p class="gate-small" style="margin-top:8px;">
+          Walk in the Park uses a compact zigzag route with stops approximately 10 metres apart,
+          allowing the entire tour to be tested in a small open space.
+        </p>
+      </div>
+
       <div class="gate-actions" id="gateActions">
         <button class="gate-btn primary" id="startEntrance">Begin at the Entrance</button>
         <button class="gate-btn secondary" id="resumeTour" style="display:none">Resume previous stop</button>
@@ -210,6 +220,29 @@
     }).catch(function (error) {
       console.error("Fionn platform failed to initialise.", error);
       return null;
+    });
+  </script>
+
+
+  <script>
+    // Developer placeholder for the compact "Walk in the Park" mode.
+    // JS can later read window.walkInParkMode and replace GPS destinations
+    // with a local zigzag route (10m forward, 10m right, 10m forward,
+    // 10m left, etc.).
+    window.walkInParkMode = false;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const park = document.getElementById("parkTourMode");
+      const full = document.getElementById("fullTourMode");
+
+      park?.addEventListener("click", () => {
+        window.walkInParkMode = true;
+        alert("Walk in the Park mode selected. The tour can now use a compact zigzag developer route.");
+      });
+
+      full?.addEventListener("click", () => {
+        window.walkInParkMode = false;
+      });
     });
   </script>
 
