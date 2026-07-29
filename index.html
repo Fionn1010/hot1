@@ -13,6 +13,54 @@
   <link rel="stylesheet" href="css/fionn-platform.css">
 
   <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+
+  <style>
+    /* Field-testing fixes: keep controls clear of Safari and the fixed Fionn toolbar. */
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      padding-bottom: calc(240px + env(safe-area-inset-bottom));
+    }
+
+    .page,
+    .gate-card,
+    .end-card {
+      padding-bottom: calc(220px + env(safe-area-inset-bottom));
+    }
+
+    .developerSkipVideo {
+      display: none;
+      width: 100%;
+      min-height: 58px;
+      margin-top: 12px;
+      border: 2px solid #d6aa35;
+      border-radius: 16px;
+      background: #161b17;
+      color: #fff4c6;
+      font: 800 1rem/1.2 Inter, sans-serif;
+      cursor: pointer;
+    }
+
+    body.dev-mode .developerSkipVideo,
+    .developerSkipVideo.is-visible {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding-bottom: calc(280px + env(safe-area-inset-bottom));
+      }
+
+      .page,
+      .gate-card,
+      .end-card {
+        padding-bottom: calc(260px + env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+
 </head>
 <body>
   <noscript><div class="noscript">JavaScript is required to run this tour.</div></noscript>
@@ -63,6 +111,7 @@
       <div class="video locked hidden" id="videoBox">
         <video id="storyVideo" class="cinematic" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noplaybackrate" crossorigin="anonymous"></video>
         <div class="videoStatus" id="videoStatus"></div>
+        <button class="developerSkipVideo" id="skipVideoBtn" type="button">⏭ Skip Video</button>
       </div>
     </section>
 
@@ -159,11 +208,6 @@
       <div class="tour-mode" id="tourMode">
         <h3 style="margin:0 0 10px;">Choose Your Tour</h3>
         <button class="gate-btn primary" id="fullTourMode">🏰 Full GPS Tour</button>
-        <button class="gate-btn secondary" id="parkTourMode">🌳 Walk in the Park (Developer Mode)</button>
-        <p class="gate-small" style="margin-top:8px;">
-          Walk in the Park uses a compact zigzag route with stops approximately 10 metres apart,
-          allowing the entire tour to be tested in a small open space.
-        </p>
       </div>
 
       <div class="gate-actions" id="gateActions">
@@ -225,23 +269,57 @@
 
 
   <script>
-    // Developer placeholder for the compact "Walk in the Park" mode.
-    // JS can later read window.walkInParkMode and replace GPS destinations
-    // with a local zigzag route (10m forward, 10m right, 10m forward,
-    // 10m left, etc.).
+    // Field-testing helpers. Developer mode is enabled with ?dev=1.
     window.walkInParkMode = false;
 
     document.addEventListener("DOMContentLoaded", () => {
-      const park = document.getElementById("parkTourMode");
-      const full = document.getElementById("fullTourMode");
+      const params = new URLSearchParams(window.location.search);
+      const isDeveloperMode = params.get("dev") === "1";
+      const skipButton = document.getElementById("skipVideoBtn");
+      const storyVideo = document.getElementById("storyVideo");
+      const videoBox = document.getElementById("videoBox");
+      const storyDone = document.getElementById("storyDone");
+      const arSection = document.querySelector("section.ar");
+      const launchAR = document.getElementById("launchAR");
+      const nextButton = document.getElementById("nextBtn");
+      const fullTour = document.getElementById("fullTourMode");
 
-      park?.addEventListener("click", () => {
-        window.walkInParkMode = true;
-        alert("Walk in the Park mode selected. The tour can now use a compact zigzag developer route.");
+      if (isDeveloperMode) {
+        document.body.classList.add("dev-mode");
+        skipButton?.classList.add("is-visible");
+      }
+
+      fullTour?.addEventListener("click", () => {
+        window.walkInParkMode = false;
       });
 
-      full?.addEventListener("click", () => {
-        window.walkInParkMode = false;
+      skipButton?.addEventListener("click", () => {
+        // Stop the visible video.
+        if (storyVideo) {
+          storyVideo.pause();
+          try { storyVideo.currentTime = storyVideo.duration || 0; } catch (_) {}
+        }
+
+        // Stop any separate narration/audio elements currently playing.
+        document.querySelectorAll("audio").forEach((audio) => {
+          audio.pause();
+          try { audio.currentTime = 0; } catch (_) {}
+        });
+
+        // Fire an ended event so the existing tour video module can perform
+        // its normal completion work when it listens for that event.
+        storyVideo?.dispatchEvent(new Event("ended", { bubbles: true }));
+
+        // Safe visual fallback if the existing handler does not update the UI.
+        videoBox?.classList.remove("locked");
+        storyDone?.classList.add("show");
+        storyDone?.removeAttribute("hidden");
+        arSection?.classList.remove("locked", "hidden");
+        launchAR?.removeAttribute("disabled");
+        nextButton?.removeAttribute("disabled");
+
+        const target = launchAR || arSection || nextButton;
+        target?.scrollIntoView({ behavior: "smooth", block: "center" });
       });
     });
   </script>
