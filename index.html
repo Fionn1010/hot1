@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/fionn-platform.css">
+  <link rel="stylesheet" href="css/model-loading.css">
 
   <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
 
@@ -119,6 +120,22 @@
       <div class="sectionLabel" id="arLabel">Immersive Experience</div>
       <h2 id="arTitle">Step Into History</h2>
       <p id="arText">Place ancient Tara into the landscape.</p>
+      <div class="modelLoadingPanel" id="modelLoadingPanel" aria-live="polite">
+        <div class="modelLoadingHeader">
+          <div>
+            <strong id="modelLoadingTitle">Preparing AR scene</strong>
+            <small id="modelLoadingFile">Waiting for model…</small>
+          </div>
+          <span class="modelLoadingPercent" id="modelLoadingPercent">0%</span>
+        </div>
+        <div class="modelLoadingTrack" role="progressbar" aria-label="AR model loading progress"
+             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="modelLoadingTrack">
+          <span id="modelLoadingBar"></span>
+        </div>
+        <p class="modelLoadingMessage" id="modelLoadingMessage">
+          The AR button will become available when the scene is ready.
+        </p>
+      </div>
       <model-viewer id="modelViewer" camera-controls ar ar-modes="scene-viewer quick-look webxr"
         touch-action="pan-y" crossorigin="anonymous" alt="Hill of Tara AR scene"></model-viewer>
       <button class="launch" id="launchAR">STEP INTO HISTORY</button>
@@ -155,6 +172,19 @@
       </div>
 
       <div class="sceneTestList" id="devSceneButtons"></div>
+      <div class="devModelStatus" id="devModelStatus">
+        <div class="devModelStatusHeader">
+          <strong>AR Asset Status</strong>
+          <span id="devModelBadge">Waiting</span>
+        </div>
+        <div class="devModelGrid">
+          <div><small>Current model</small><strong id="devModelName">—</strong></div>
+          <div><small>Load progress</small><strong id="devModelProgress">0%</strong></div>
+          <div><small>Current scene</small><strong id="devModelReady">Not ready</strong></div>
+          <div><small>Next scene cache</small><strong id="devNextModelStatus">Not started</strong></div>
+        </div>
+      </div>
+
       <div class="devUtilities">
         <button class="devUtilityBtn" type="button" id="testCurrentVideo">Play current video</button>
         <button class="devUtilityBtn" type="button" id="testCurrentAR">Launch current AR</button>
@@ -333,6 +363,7 @@
   <script src="js/gps.js" defer></script>
   <script src="js/preload.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script src="js/model-loading.js" defer></script>
   <script src="js/continue-navigation-fix.js?v=2" defer></script>
 </body>
 </html>

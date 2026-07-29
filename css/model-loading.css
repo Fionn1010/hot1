@@ -1,0 +1,167 @@
+/* Fionn Engine — AR model loading and developer diagnostics */
+
+.modelLoadingPanel {
+  margin: 18px auto 16px;
+  padding: 18px;
+  max-width: 760px;
+  border: 1px solid rgba(202, 166, 73, 0.58);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(16, 37, 29, 0.97), rgba(8, 24, 18, 0.97));
+  color: #fff;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.modelLoadingHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.modelLoadingHeader strong,
+.modelLoadingHeader small {
+  display: block;
+}
+
+.modelLoadingHeader strong {
+  font-size: clamp(1.05rem, 4.5vw, 1.35rem);
+}
+
+.modelLoadingHeader small {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.72);
+  overflow-wrap: anywhere;
+}
+
+.modelLoadingPercent {
+  min-width: 62px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-align: right;
+  color: #e8ca77;
+}
+
+.modelLoadingTrack {
+  height: 18px;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.38);
+}
+
+.modelLoadingTrack span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #a97924, #f1d17c);
+  transition: width 180ms ease-out;
+}
+
+.modelLoadingMessage {
+  margin: 12px 0 0;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.modelLoadingPanel[data-status="ready"] {
+  border-color: rgba(91, 190, 126, 0.8);
+}
+
+.modelLoadingPanel[data-status="ready"] .modelLoadingTrack span {
+  background: linear-gradient(90deg, #348957, #72d392);
+}
+
+.modelLoadingPanel[data-status="error"] {
+  border-color: rgba(221, 92, 92, 0.88);
+}
+
+.modelLoadingPanel[data-status="error"] .modelLoadingTrack span {
+  background: #c95050;
+}
+
+#launchAR:disabled {
+  cursor: wait;
+  opacity: 0.58;
+  filter: grayscale(0.2);
+}
+
+#launchAR.model-ready {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.devModelStatus {
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid rgba(232, 202, 119, 0.38);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.devModelStatusHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 13px;
+}
+
+#devModelBadge {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#devModelBadge[data-status="ready"] {
+  background: rgba(75, 180, 112, 0.24);
+  color: #aaf0c0;
+}
+
+#devModelBadge[data-status="error"] {
+  background: rgba(210, 74, 74, 0.22);
+  color: #ffc0c0;
+}
+
+.devModelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.devModelGrid > div {
+  min-width: 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.devModelGrid small,
+.devModelGrid strong {
+  display: block;
+}
+
+.devModelGrid small {
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.devModelGrid strong {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 560px) {
+  .modelLoadingPanel {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .devModelGrid {
+    grid-template-columns: 1fr;
+  }
+}
