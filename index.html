@@ -1,369 +1,632 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#10251d">
-  <meta name="description" content="Hill of Tara immersive heritage experience by Fionn Heritage Tours.">
-  <title>Hill of Tara · Royal Heritage Experience</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10251d">
+<meta name="description" content="Hill of Tara immersive heritage experience by Fionn Heritage Tours.">
+<title>Hill of Tara · Royal Heritage Experience</title>
 
-  <link rel="preconnect" href="https://pub-62956dc8ece640c59a779ae7fcd74275.r2.dev" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/fionn-platform.css">
-  <link rel="stylesheet" href="css/model-loading.css">
+<link rel="preconnect" href="https://pub-62956dc8ece640c59a779ae7fcd74275.r2.dev" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/fionn-platform.css">
+<link rel="stylesheet" href="css/model-loading.css">
 
-  <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
 
-  <style>
-    /* Field-testing fixes: keep controls clear of Safari and the fixed Fionn toolbar. */
-    html, body {
-      min-height: 100%;
-    }
+<style>
+html, body { min-height: 100%; }
 
-    body {
-      padding-bottom: calc(240px + env(safe-area-inset-bottom));
-    }
+body {
+  padding-bottom: calc(240px + env(safe-area-inset-bottom));
+}
 
-    .page,
-    .gate-card,
-    .end-card {
-      padding-bottom: calc(220px + env(safe-area-inset-bottom));
-    }
+.page,
+.gate-card,
+.end-card {
+  padding-bottom: calc(220px + env(safe-area-inset-bottom));
+}
 
-    .developerSkipVideo {
-      display: none;
-      width: 100%;
-      min-height: 58px;
-      margin-top: 12px;
-      border: 2px solid #d6aa35;
-      border-radius: 16px;
-      background: #161b17;
-      color: #fff4c6;
-      font: 800 1rem/1.2 Inter, sans-serif;
-      cursor: pointer;
-    }
+.developerSkipVideo {
+  display: none;
+  width: 100%;
+  min-height: 58px;
+  margin-top: 12px;
+  border: 2px solid #d6aa35;
+  border-radius: 16px;
+  background: #161b17;
+  color: #fff4c6;
+  font: 800 1rem/1.2 Inter, sans-serif;
+  cursor: pointer;
+}
 
-    body.dev-mode .developerSkipVideo,
-    .developerSkipVideo.is-visible {
-      display: block;
-    }
+body.dev-mode .developerSkipVideo,
+.developerSkipVideo.is-visible {
+  display: block;
+}
 
-    @media (max-width: 600px) {
-      body {
-        padding-bottom: calc(280px + env(safe-area-inset-bottom));
-      }
+/* -------------------------------------------------------------
+   Gaussian / GS GLB test panel
+   Visible only in developer mode (?dev=1)
+------------------------------------------------------------- */
+.gsTestPanel {
+  display: none;
+  margin: 22px 0;
+  padding: 18px;
+  border: 2px solid #d6aa35;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #12261d 0%, #0c1712 100%);
+  color: #fff;
+  box-shadow: 0 12px 34px rgba(0,0,0,.28);
+}
 
-      .page,
-      .gate-card,
-      .end-card {
-        padding-bottom: calc(260px + env(safe-area-inset-bottom));
-      }
-    }
-  </style>
+body.dev-mode .gsTestPanel {
+  display: block;
+}
 
+.gsTestEyebrow {
+  margin-bottom: 5px;
+  color: #e5c665;
+  font: 900 .72rem/1.2 Inter, sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.gsTestPanel h3 {
+  margin: 0 0 7px;
+  color: #fff4c6;
+  font-family: Cinzel, serif;
+  font-size: 1.35rem;
+}
+
+.gsTestPanel p {
+  margin: 0 0 14px;
+  line-height: 1.45;
+}
+
+.gsTestButtons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.gsTestBtn {
+  min-height: 52px;
+  padding: 10px 8px;
+  border: 1px solid #d6aa35;
+  border-radius: 13px;
+  background: #1a2f25;
+  color: #fff4c6;
+  font: 800 .92rem/1.2 Inter, sans-serif;
+  cursor: pointer;
+}
+
+.gsTestBtn.active {
+  background: #d6aa35;
+  color: #10251d;
+}
+
+#gsTestViewer {
+  display: block;
+  width: 100%;
+  height: min(62vh, 520px);
+  min-height: 360px;
+  border: 1px solid rgba(214,170,53,.65);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,.13), rgba(255,255,255,.02) 45%, rgba(0,0,0,.20) 100%),
+    #18231d;
+  overflow: hidden;
+}
+
+.gsTestStatus {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.07);
+  font: 700 .82rem/1.35 Inter, sans-serif;
+}
+
+.gsTestStatus strong {
+  color: #f0d578;
+}
+
+.gsTestActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 10px;
+}
+
+.gsTestAction {
+  min-height: 50px;
+  border: 1px solid #d6aa35;
+  border-radius: 13px;
+  background: #d6aa35;
+  color: #10251d;
+  font: 900 .9rem/1.2 Inter, sans-serif;
+  cursor: pointer;
+}
+
+.gsTestAction.secondary {
+  background: transparent;
+  color: #fff4c6;
+}
+
+.gsTestNote {
+  display: block;
+  margin-top: 10px;
+  color: #cbd5ce;
+  font: 600 .78rem/1.45 Inter, sans-serif;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-bottom: calc(280px + env(safe-area-inset-bottom));
+  }
+
+  .page,
+  .gate-card,
+  .end-card {
+    padding-bottom: calc(260px + env(safe-area-inset-bottom));
+  }
+
+  .gsTestButtons {
+    grid-template-columns: 1fr;
+  }
+
+  #gsTestViewer {
+    min-height: 330px;
+    height: 55vh;
+  }
+}
+</style>
 </head>
+
 <body>
-  <noscript><div class="noscript">JavaScript is required to run this tour.</div></noscript>
+<noscript><div class="noscript">JavaScript is required to run this tour.</div></noscript>
 
-  <main class="page">
-    <section class="hero">
-      <div>
-        <div class="crown">♛</div>
-        <h1>Hill of Tara</h1>
-        <p id="heroTagline">SEAT OF THE HIGH KINGS</p>
+<main class="page">
+  <section class="hero">
+    <div>
+      <div class="crown">♛</div>
+      <h1>Hill of Tara</h1>
+      <p id="heroTagline">SEAT OF THE HIGH KINGS</p>
+    </div>
+  </section>
+
+  <div class="languageBar">
+    <label for="languageSelect" id="languageLabel">Language</label>
+    <select class="languageSelect" id="languageSelect" aria-label="Tour language"></select>
+  </div>
+
+  <section class="gps topGuide" id="gpsSection">
+    <h2 id="gpsTitle">GPS Journey</h2>
+    <p id="gpsSubtitle">Follow the King's Path</p>
+
+    <div class="compassWrap">
+      <div class="compass">
+        <div class="dir n">N</div><div class="dir e">E</div>
+        <div class="dir s">S</div><div class="dir w">W</div>
+        <div class="pointer" id="pointer" aria-label="direction pointer"><span></span></div>
       </div>
-    </section>
-
-    <div class="languageBar">
-      <label for="languageSelect" id="languageLabel">Language</label>
-      <select class="languageSelect" id="languageSelect" aria-label="Tour language"></select>
     </div>
 
-    <section class="gps topGuide" id="gpsSection">
-      <h2 id="gpsTitle">GPS Journey</h2>
-      <p id="gpsSubtitle">Follow the King's Path</p>
-      <div class="compassWrap">
-        <div class="compass">
-          <div class="dir n">N</div><div class="dir e">E</div>
-          <div class="dir s">S</div><div class="dir w">W</div>
-          <div class="pointer" id="pointer" aria-label="direction pointer"><span></span></div>
-        </div>
-      </div>
-      <div class="distance" id="distance">—<small>metres remaining</small></div>
-      <div class="dest"><span id="destinationLabel">Destination:</span> <strong id="gpsDest">THE ENTRANCE</strong></div>
-      <div class="gpsControls">
-        <button class="largeBtn" id="gpsBtn">Enable GPS Compass</button>
-        <button class="largeBtn secondary" id="jumpCurrent">Jump to Current Stop</button>
-        <button class="largeBtn secondary walkingArrival" id="arrivedBtn">I'm at the stop</button>
-      </div>
-      <p class="gpsNote" id="gpsNote">Best used outdoors. GPS may drift by 5–20 metres around trees or buildings.</p>
-    </section>
+    <div class="distance" id="distance">—<small>metres remaining</small></div>
+    <div class="dest"><span id="destinationLabel">Destination:</span> <strong id="gpsDest">THE ENTRANCE</strong></div>
 
-    <section class="card">
-      <div class="intro">
-        <div class="stopnum" id="stopNum">STOP 1</div>
-        <h2 class="title" id="stopTitle">THE ENTRANCE</h2>
-        <p class="subtitle" id="stopSubtitle">Begin your journey</p>
-        <button class="begin" id="beginBtn">♛ BEGIN THIS STOP</button>
-        <p class="hint" id="beginHint">Tap the gold button to begin the cinematic story. The video opens full screen, then returns you here for AR.</p>
-        <div class="storyDone" id="storyDone">✨ Story finished. View the AR scene next. The GPS guide is at the top of the page.</div>
-      </div>
-      <div class="video locked hidden" id="videoBox">
-        <video id="storyVideo" class="cinematic" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noplaybackrate" crossorigin="anonymous"></video>
-        <div class="videoStatus" id="videoStatus"></div>
-        <button class="developerSkipVideo" id="skipVideoBtn" type="button">⏭ Skip Video</button>
-      </div>
-    </section>
-
-    <section class="section ar">
-      <div class="sectionLabel" id="arLabel">Immersive Experience</div>
-      <h2 id="arTitle">Step Into History</h2>
-      <p id="arText">Place ancient Tara into the landscape.</p>
-      <div class="modelLoadingPanel" id="modelLoadingPanel" aria-live="polite">
-        <div class="modelLoadingHeader">
-          <div>
-            <strong id="modelLoadingTitle">Preparing AR scene</strong>
-            <small id="modelLoadingFile">Waiting for model…</small>
-          </div>
-          <span class="modelLoadingPercent" id="modelLoadingPercent">0%</span>
-        </div>
-        <div class="modelLoadingTrack" role="progressbar" aria-label="AR model loading progress"
-             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="modelLoadingTrack">
-          <span id="modelLoadingBar"></span>
-        </div>
-        <p class="modelLoadingMessage" id="modelLoadingMessage">
-          The AR button will become available when the scene is ready.
-        </p>
-      </div>
-      <model-viewer id="modelViewer" camera-controls ar ar-modes="scene-viewer quick-look webxr"
-        touch-action="pan-y" crossorigin="anonymous" alt="Hill of Tara AR scene"></model-viewer>
-      <button class="launch" id="launchAR">STEP INTO HISTORY</button>
-      <button class="arContinue" id="arContinue">I’VE FINISHED — CONTINUE</button>
-      <p class="arPhotoTip">
-        <span id="photoTipMain">Photo tip: when AR opens, tap the screen to show the camera button.</span>
-        <small id="photoTipSmall">For group photos, one person can hold the phone while others step into the scene.</small>
-      </p>
-    </section>
-
-    <div class="nextBlock">
-      <h3 id="nextHeading">NEXT STOP</h3>
-      <p id="nextName">The Banqueting Hall</p>
-      <button class="nextBtn" id="nextBtn">Continue →</button>
+    <div class="gpsControls">
+      <button class="largeBtn" id="gpsBtn">Enable GPS Compass</button>
+      <button class="largeBtn secondary" id="jumpCurrent">Jump to Current Stop</button>
+      <button class="largeBtn secondary walkingArrival" id="arrivedBtn">I'm at the stop</button>
     </div>
 
-    <section class="dev devBottom" id="developerTools" hidden aria-labelledby="developerHeading">
-      <div class="devHeader">
+    <p class="gpsNote" id="gpsNote">Best used outdoors. GPS may drift by 5–20 metres around trees or buildings.</p>
+  </section>
+
+  <section class="card">
+    <div class="intro">
+      <div class="stopnum" id="stopNum">STOP 1</div>
+      <h2 class="title" id="stopTitle">THE ENTRANCE</h2>
+      <p class="subtitle" id="stopSubtitle">Begin your journey</p>
+
+      <button class="begin" id="beginBtn">♛ BEGIN THIS STOP</button>
+      <p class="hint" id="beginHint">Tap the gold button to begin the cinematic story. The video opens full screen, then returns you here for AR.</p>
+      <div class="storyDone" id="storyDone">✨ Story finished. View the AR scene next. The GPS guide is at the top of the page.</div>
+    </div>
+
+    <div class="video locked hidden" id="videoBox">
+      <video id="storyVideo" class="cinematic" playsinline webkit-playsinline preload="metadata"
+             controlsList="nodownload noplaybackrate" crossorigin="anonymous"></video>
+      <div class="videoStatus" id="videoStatus"></div>
+      <button class="developerSkipVideo" id="skipVideoBtn" type="button">⏭ Skip Video</button>
+    </div>
+  </section>
+
+  <section class="section ar">
+    <div class="sectionLabel" id="arLabel">Immersive Experience</div>
+    <h2 id="arTitle">Step Into History</h2>
+    <p id="arText">Place ancient Tara into the landscape.</p>
+
+    <div class="modelLoadingPanel" id="modelLoadingPanel" aria-live="polite">
+      <div class="modelLoadingHeader">
         <div>
-          <div class="devEyebrow">PRIVATE TESTING AREA</div>
-          <h2 id="developerHeading">Developer Tools</h2>
-          <p>Open any tour stop immediately, or launch its AR model without completing the earlier scenes.</p>
+          <strong id="modelLoadingTitle">Preparing AR scene</strong>
+          <small id="modelLoadingFile">Waiting for model…</small>
         </div>
-        <span class="devBadge">DEV MODE</span>
+        <span class="modelLoadingPercent" id="modelLoadingPercent">0%</span>
       </div>
 
-      <div class="devLanguageTester">
-        <label for="devLanguageSelect">Test tour language and dubbed video</label>
-        <div class="devLanguageSelectRow">
-          <select id="devLanguageSelect" aria-label="Developer test language"></select>
-          <button class="devApplyLanguageBtn" type="button" id="applyDevLanguage">Apply language</button>
-        </div>
-        <p id="devLanguageHelp">Choose a language, then open a scene or play its video. If a dubbed version is unavailable, the English video will be used.</p>
+      <div class="modelLoadingTrack" role="progressbar" aria-label="AR model loading progress"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="modelLoadingTrack">
+        <span id="modelLoadingBar"></span>
       </div>
 
-      <div class="sceneTestList" id="devSceneButtons"></div>
-      <div class="devModelStatus" id="devModelStatus">
-        <div class="devModelStatusHeader">
-          <strong>AR Asset Status</strong>
-          <span id="devModelBadge">Waiting</span>
-        </div>
-        <div class="devModelGrid">
-          <div><small>Current model</small><strong id="devModelName">—</strong></div>
-          <div><small>Load progress</small><strong id="devModelProgress">0%</strong></div>
-          <div><small>Current scene</small><strong id="devModelReady">Not ready</strong></div>
-          <div><small>Next scene cache</small><strong id="devNextModelStatus">Not started</strong></div>
-        </div>
-      </div>
-
-      <div class="devUtilities">
-        <button class="devUtilityBtn" type="button" id="testCurrentVideo">Play current video</button>
-        <button class="devUtilityBtn" type="button" id="testCurrentAR">Launch current AR</button>
-      </div>
-
-      <details class="devAdvanced">
-        <summary>Language-pack testing and diagnostics</summary>
-        <div class="devAdvancedBody">
-          <p id="developerText">These controls load JSON files from the <strong>lang/</strong> folder without changing the phone language.</p>
-          <div class="devGrid" id="devLanguageButtons">
-            <button class="devLangBtn" type="button" data-dev-lang="en">English</button>
-            <button class="devLangBtn" type="button" data-dev-lang="fr">Français</button>
-            <button class="devLangBtn" type="button" data-dev-lang="de">Deutsch</button>
-            <button class="devLangBtn" type="button" data-dev-lang="es">Español</button>
-            <button class="devLangBtn" type="button" data-dev-lang="it">Italiano</button>
-            <button class="devLangBtn" type="button" data-dev-lang="pt">Português</button>
-            <button class="devLangBtn" type="button" data-dev-lang="hi">हिन्दी</button>
-            <button class="devLangBtn" type="button" data-dev-lang="zh">中文</button>
-            <button class="devLangBtn" type="button" data-dev-lang="th">ไทย</button>
-          </div>
-          <div class="devUtilities">
-            <button class="devUtilityBtn" type="button" id="testAllLanguagePacks">Test all JSON packs</button>
-            <button class="devUtilityBtn" type="button" id="useDetectedLanguage">Use detected phone language</button>
-            <button class="devUtilityBtn" type="button" id="clearLanguageChoice">Clear saved language</button>
-          </div>
-          <div class="devStatus" id="languagePackStatus" role="status" aria-live="polite">Ready to test.</div>
-          <div class="devDiagnostics" id="languageDiagnostics">
-            <div><strong>Phone languages:</strong> <span id="diagPhoneLanguages">—</span></div>
-            <div><strong>Detected language:</strong> <span id="diagDetectedLanguage">—</span></div>
-            <div><strong>Active language:</strong> <span id="diagActiveLanguage">—</span></div>
-            <div><strong>Loaded source:</strong> <span id="diagLoadedSource">Embedded English</span></div>
-            <div><strong>Expected JSON path:</strong> <span id="diagPackPath">—</span></div>
-          </div>
-        </div>
-      </details>
-
-      <button class="stop-all" id="stopAll">■ Stop Video</button>
-      <p class="devHint">This panel appears only when the address contains <strong>?dev=1</strong>.</p>
-    </section>
-  </main>
-
-  <div class="gate-screen" id="gateScreen" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
-    <div class="gate-card">
-      <div class="gate-crown">♛</div>
-      <h2 id="gateTitle">Welcome to<br>the Hill of Tara</h2>
-      <p id="gateIntro">Seat of the High Kings of Ireland. The King's Path begins at the Entrance.</p>
-      <div class="gate-language">
-        <label for="gateLanguageSelect" id="gateLanguageLabel">Language</label>
-        <select class="languageSelect" id="gateLanguageSelect" aria-label="Tour language"></select>
-      </div>
-      <div class="tour-mode" id="tourMode">
-        <h3 style="margin:0 0 10px;">Choose Your Tour</h3>
-        <button class="gate-btn primary" id="fullTourMode">🏰 Full GPS Tour</button>
-      </div>
-
-      <div class="gate-actions" id="gateActions">
-        <button class="gate-btn primary" id="startEntrance">Begin at the Entrance</button>
-        <button class="gate-btn secondary" id="resumeTour" style="display:none">Resume previous stop</button>
-        <button class="gate-btn ghost" id="jumpNearest">Jump to my current location</button>
-      </div>
-      <span class="gate-small" id="gateNote">For the full story, start at the Entrance. If you are already at another stop, use GPS to jump nearby.</span>
+      <p class="modelLoadingMessage" id="modelLoadingMessage">
+        The AR button will become available when the scene is ready.
+      </p>
     </div>
+
+    <model-viewer id="modelViewer" camera-controls ar ar-modes="scene-viewer quick-look webxr"
+                  touch-action="pan-y" crossorigin="anonymous"
+                  alt="Hill of Tara AR scene"></model-viewer>
+
+    <button class="launch" id="launchAR">STEP INTO HISTORY</button>
+    <button class="arContinue" id="arContinue">I’VE FINISHED — CONTINUE</button>
+
+    <p class="arPhotoTip">
+      <span id="photoTipMain">Photo tip: when AR opens, tap the screen to show the camera button.</span>
+      <small id="photoTipSmall">For group photos, one person can hold the phone while others step into the scene.</small>
+    </p>
+  </section>
+
+  <div class="nextBlock">
+    <h3 id="nextHeading">NEXT STOP</h3>
+    <p id="nextName">The Banqueting Hall</p>
+    <button class="nextBtn" id="nextBtn">Continue →</button>
   </div>
 
-  <div class="cinemaOverlay" id="cinemaOverlay" aria-live="polite">
-    <div class="cinemaCard">
-      <div class="cinemaKnot">☘</div>
-      <div class="cinemaTitle" id="cinemaTitle">The story has been told.</div>
-      <p class="cinemaText" id="cinemaText">Now step into the world of the High King.</p>
-      <button class="cinemaAction" id="transitionAR">STEP INTO HISTORY</button>
-    </div>
-  </div>
-
-  <div class="postArOverlay" id="postArOverlay" role="dialog" aria-modal="true">
-    <div class="postArCard">
-      <div class="postArKnot">✥</div>
-      <h2 id="postArTitle">Excellent.</h2>
-      <p id="postArText">You have stood where the High King once stood.<br><br>The King’s Path continues.</p>
-      <button class="cinemaAction" id="continueAfterAR">CONTINUE</button>
-    </div>
-  </div>
-
-  <div class="end-screen" id="endScreen">
-    <div class="end-card">
-      <video class="farewellVideo" id="farewellVideo" playsinline webkit-playsinline controls preload="metadata"
-        src="videos/Farewell.mp4" data-fionn-file="Farewell.mp4" crossorigin="anonymous"></video>
-      <img class="thank-img" id="thankImg" src="./thank you.png" alt="Thank you for visiting the Hill of Tara">
-      <div class="thanksFallback" id="thanksFallback">
-        <h2 id="thanksTitle">Thank you</h2>
-        <div class="bubbles"><span>谢谢</span><span>धन्यवाद</span><span>Go raibh maith agat</span><span>Merci</span><span>Gracias</span><span>Grazie</span><span>Danke</span><span>Obrigado</span><span>Dziękuję</span><span>ありがとう</span><span>감사합니다</span><span>شكراً</span></div>
+  <section class="dev devBottom" id="developerTools" hidden aria-labelledby="developerHeading">
+    <div class="devHeader">
+      <div>
+        <div class="devEyebrow">PRIVATE TESTING AREA</div>
+        <h2 id="developerHeading">Developer Tools</h2>
+        <p>Open any tour stop immediately, or launch its AR model without completing the earlier scenes.</p>
       </div>
-      <div class="end-actions">
-        <button class="return-btn" id="returnStart">Return to Start</button>
-        <a class="meath-btn" href="#" id="discoverMeath">Discover Meath</a>
+      <span class="devBadge">DEV MODE</span>
+    </div>
+
+    <!-- NEW: Gaussian / GS GLB comparison tester -->
+    <div class="gsTestPanel" id="gsTestPanel">
+      <div class="gsTestEyebrow">NEW MODEL TEST</div>
+      <h3>Gaussian Splat / GS Test Models</h3>
+      <p>Compare the three new test files without changing the normal Hill of Tara tour.</p>
+
+      <div class="gsTestButtons">
+        <button class="gsTestBtn active" type="button" data-gs-model="models/GStest1.glb">GS TEST 1</button>
+        <button class="gsTestBtn" type="button" data-gs-model="models/GStest2.glb">GS TEST 2</button>
+        <button class="gsTestBtn" type="button" data-gs-model="models/GStest3.glb">GS TEST 3</button>
+      </div>
+
+      <model-viewer
+        id="gsTestViewer"
+        src="models/GStest1.glb"
+        camera-controls
+        touch-action="pan-y"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        shadow-intensity="0.7"
+        exposure="1"
+        environment-image="neutral"
+        interaction-prompt="auto"
+        loading="eager"
+        reveal="auto"
+        crossorigin="anonymous"
+        alt="Hill of Tara Gaussian test model">
+      </model-viewer>
+
+      <div class="gsTestStatus" role="status" aria-live="polite">
+        <span>Loaded file: <strong id="gsTestFilename">GStest1.glb</strong></span>
+        <span id="gsTestLoadState">Loading…</span>
+      </div>
+
+      <div class="gsTestActions">
+        <button class="gsTestAction" type="button" id="gsLaunchAR">VIEW IN AR</button>
+        <button class="gsTestAction secondary" type="button" id="gsResetCamera">RESET VIEW</button>
+      </div>
+
+      <small class="gsTestNote">
+        These are isolated developer tests. Selecting one does not replace any of the eight normal tour models.
+      </small>
+    </div>
+
+    <div class="devLanguageTester">
+      <label for="devLanguageSelect">Test tour language and dubbed video</label>
+      <div class="devLanguageSelectRow">
+        <select id="devLanguageSelect" aria-label="Developer test language"></select>
+        <button class="devApplyLanguageBtn" type="button" id="applyDevLanguage">Apply language</button>
+      </div>
+      <p id="devLanguageHelp">Choose a language, then open a scene or play its video. If a dubbed version is unavailable, the English video will be used.</p>
+    </div>
+
+    <div class="sceneTestList" id="devSceneButtons"></div>
+
+    <div class="devModelStatus" id="devModelStatus">
+      <div class="devModelStatusHeader">
+        <strong>AR Asset Status</strong>
+        <span id="devModelBadge">Waiting</span>
+      </div>
+      <div class="devModelGrid">
+        <div><small>Current model</small><strong id="devModelName">—</strong></div>
+        <div><small>Load progress</small><strong id="devModelProgress">0%</strong></div>
+        <div><small>Current scene</small><strong id="devModelReady">Not ready</strong></div>
+        <div><small>Next scene cache</small><strong id="devNextModelStatus">Not started</strong></div>
       </div>
     </div>
+
+    <div class="devUtilities">
+      <button class="devUtilityBtn" type="button" id="testCurrentVideo">Play current video</button>
+      <button class="devUtilityBtn" type="button" id="testCurrentAR">Launch current AR</button>
+    </div>
+
+    <details class="devAdvanced">
+      <summary>Language-pack testing and diagnostics</summary>
+      <div class="devAdvancedBody">
+        <p id="developerText">These controls load JSON files from the <strong>lang/</strong> folder without changing the phone language.</p>
+
+        <div class="devGrid" id="devLanguageButtons">
+          <button class="devLangBtn" type="button" data-dev-lang="en">English</button>
+          <button class="devLangBtn" type="button" data-dev-lang="fr">Français</button>
+          <button class="devLangBtn" type="button" data-dev-lang="de">Deutsch</button>
+          <button class="devLangBtn" type="button" data-dev-lang="es">Español</button>
+          <button class="devLangBtn" type="button" data-dev-lang="it">Italiano</button>
+          <button class="devLangBtn" type="button" data-dev-lang="pt">Português</button>
+          <button class="devLangBtn" type="button" data-dev-lang="hi">हिन्दी</button>
+          <button class="devLangBtn" type="button" data-dev-lang="zh">中文</button>
+          <button class="devLangBtn" type="button" data-dev-lang="th">ไทย</button>
+        </div>
+
+        <div class="devUtilities">
+          <button class="devUtilityBtn" type="button" id="testAllLanguagePacks">Test all JSON packs</button>
+          <button class="devUtilityBtn" type="button" id="useDetectedLanguage">Use detected phone language</button>
+          <button class="devUtilityBtn" type="button" id="clearLanguageChoice">Clear saved language</button>
+        </div>
+
+        <div class="devStatus" id="languagePackStatus" role="status" aria-live="polite">Ready to test.</div>
+
+        <div class="devDiagnostics" id="languageDiagnostics">
+          <div><strong>Phone languages:</strong> <span id="diagPhoneLanguages">—</span></div>
+          <div><strong>Detected language:</strong> <span id="diagDetectedLanguage">—</span></div>
+          <div><strong>Active language:</strong> <span id="diagActiveLanguage">—</span></div>
+          <div><strong>Loaded source:</strong> <span id="diagLoadedSource">Embedded English</span></div>
+          <div><strong>Expected JSON path:</strong> <span id="diagPackPath">—</span></div>
+        </div>
+      </div>
+    </details>
+
+    <button class="stop-all" id="stopAll">■ Stop Video</button>
+    <p class="devHint">This panel appears only when the address contains <strong>?dev=1</strong>.</p>
+  </section>
+</main>
+
+<div class="gate-screen" id="gateScreen" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-card">
+    <div class="gate-crown">♛</div>
+    <h2 id="gateTitle">Welcome to<br>the Hill of Tara</h2>
+    <p id="gateIntro">Seat of the High Kings of Ireland. The King's Path begins at the Entrance.</p>
+
+    <div class="gate-language">
+      <label for="gateLanguageSelect" id="gateLanguageLabel">Language</label>
+      <select class="languageSelect" id="gateLanguageSelect" aria-label="Tour language"></select>
+    </div>
+
+    <div class="tour-mode" id="tourMode">
+      <h3 style="margin:0 0 10px;">Choose Your Tour</h3>
+      <button class="gate-btn primary" id="fullTourMode">🏰 Full GPS Tour</button>
+    </div>
+
+    <div class="gate-actions" id="gateActions">
+      <button class="gate-btn primary" id="startEntrance">Begin at the Entrance</button>
+      <button class="gate-btn secondary" id="resumeTour" style="display:none">Resume previous stop</button>
+      <button class="gate-btn ghost" id="jumpNearest">Jump to my current location</button>
+    </div>
+
+    <span class="gate-small" id="gateNote">For the full story, start at the Entrance. If you are already at another stop, use GPS to jump nearby.</span>
   </div>
+</div>
 
-  <div class="preloadStatus" id="preloadStatus" role="status" aria-live="polite"></div>
+<div class="cinemaOverlay" id="cinemaOverlay" aria-live="polite">
+  <div class="cinemaCard">
+    <div class="cinemaKnot">☘</div>
+    <div class="cinemaTitle" id="cinemaTitle">The story has been told.</div>
+    <p class="cinemaText" id="cinemaText">Now step into the world of the High King.</p>
+    <button class="cinemaAction" id="transitionAR">STEP INTO HISTORY</button>
+  </div>
+</div>
 
-  <!-- Shared Fionn platform starts first, so existing tour modules can use Fionn.asset(). -->
-  <script src="engine/fionn-platform.js"></script>
-  <script>
-    window.fionnPlatformReady = window.FionnPlatform.init({
-      config: "config/platform.json",
-      camera: { modelViewerId: "modelViewer" }
-    }).catch(function (error) {
-      console.error("Fionn platform failed to initialise.", error);
-      return null;
-    });
-  </script>
+<div class="postArOverlay" id="postArOverlay" role="dialog" aria-modal="true">
+  <div class="postArCard">
+    <div class="postArKnot">✥</div>
+    <h2 id="postArTitle">Excellent.</h2>
+    <p id="postArText">You have stood where the High King once stood.<br><br>The King’s Path continues.</p>
+    <button class="cinemaAction" id="continueAfterAR">CONTINUE</button>
+  </div>
+</div>
 
+<div class="end-screen" id="endScreen">
+  <div class="end-card">
+    <video class="farewellVideo" id="farewellVideo" playsinline webkit-playsinline controls preload="metadata"
+           src="videos/Farewell.mp4" data-fionn-file="Farewell.mp4" crossorigin="anonymous"></video>
 
-  <script>
-    // Field-testing helpers. Developer mode is enabled with ?dev=1.
+    <img class="thank-img" id="thankImg" src="./thank you.png" alt="Thank you for visiting the Hill of Tara">
+
+    <div class="thanksFallback" id="thanksFallback">
+      <h2 id="thanksTitle">Thank you</h2>
+      <div class="bubbles">
+        <span>谢谢</span><span>धन्यवाद</span><span>Go raibh maith agat</span>
+        <span>Merci</span><span>Gracias</span><span>Grazie</span><span>Danke</span>
+        <span>Obrigado</span><span>Dziękuję</span><span>ありがとう</span><span>감사합니다</span><span>شكراً</span>
+      </div>
+    </div>
+
+    <div class="end-actions">
+      <button class="return-btn" id="returnStart">Return to Start</button>
+      <a class="meath-btn" href="#" id="discoverMeath">Discover Meath</a>
+    </div>
+  </div>
+</div>
+
+<div class="preloadStatus" id="preloadStatus" role="status" aria-live="polite"></div>
+
+<!-- Shared Fionn platform starts first, so existing tour modules can use Fionn.asset(). -->
+<script src="engine/fionn-platform.js"></script>
+<script>
+window.fionnPlatformReady = window.FionnPlatform.init({
+  config: "config/platform.json",
+  camera: { modelViewerId: "modelViewer" }
+}).catch(function (error) {
+  console.error("Fionn platform failed to initialise.", error);
+  return null;
+});
+</script>
+
+<script>
+// Field-testing helpers. Developer mode is enabled with ?dev=1.
+window.walkInParkMode = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const isDeveloperMode = params.get("dev") === "1";
+
+  const skipButton = document.getElementById("skipVideoBtn");
+  const storyVideo = document.getElementById("storyVideo");
+  const videoBox = document.getElementById("videoBox");
+  const storyDone = document.getElementById("storyDone");
+  const arSection = document.querySelector("section.ar");
+  const launchAR = document.getElementById("launchAR");
+  const nextButton = document.getElementById("nextBtn");
+  const fullTour = document.getElementById("fullTourMode");
+
+  if (isDeveloperMode) {
+    document.body.classList.add("dev-mode");
+    skipButton?.classList.add("is-visible");
+  }
+
+  fullTour?.addEventListener("click", () => {
     window.walkInParkMode = false;
+  });
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const isDeveloperMode = params.get("dev") === "1";
-      const skipButton = document.getElementById("skipVideoBtn");
-      const storyVideo = document.getElementById("storyVideo");
-      const videoBox = document.getElementById("videoBox");
-      const storyDone = document.getElementById("storyDone");
-      const arSection = document.querySelector("section.ar");
-      const launchAR = document.getElementById("launchAR");
-      const nextButton = document.getElementById("nextBtn");
-      const fullTour = document.getElementById("fullTourMode");
+  skipButton?.addEventListener("click", () => {
+    if (storyVideo) {
+      storyVideo.pause();
+      try { storyVideo.currentTime = storyVideo.duration || 0; } catch (_) {}
+    }
 
-      if (isDeveloperMode) {
-        document.body.classList.add("dev-mode");
-        skipButton?.classList.add("is-visible");
-      }
-
-      fullTour?.addEventListener("click", () => {
-        window.walkInParkMode = false;
-      });
-
-      skipButton?.addEventListener("click", () => {
-        // Stop the visible video.
-        if (storyVideo) {
-          storyVideo.pause();
-          try { storyVideo.currentTime = storyVideo.duration || 0; } catch (_) {}
-        }
-
-        // Stop any separate narration/audio elements currently playing.
-        document.querySelectorAll("audio").forEach((audio) => {
-          audio.pause();
-          try { audio.currentTime = 0; } catch (_) {}
-        });
-
-        // Fire an ended event so the existing tour video module can perform
-        // its normal completion work when it listens for that event.
-        storyVideo?.dispatchEvent(new Event("ended", { bubbles: true }));
-
-        // Safe visual fallback if the existing handler does not update the UI.
-        videoBox?.classList.remove("locked");
-        storyDone?.classList.add("show");
-        storyDone?.removeAttribute("hidden");
-        arSection?.classList.remove("locked", "hidden");
-        launchAR?.removeAttribute("disabled");
-        nextButton?.removeAttribute("disabled");
-
-        const target = launchAR || arSection || nextButton;
-        target?.scrollIntoView({ behavior: "smooth", block: "center" });
-      });
+    document.querySelectorAll("audio").forEach((audio) => {
+      audio.pause();
+      try { audio.currentTime = 0; } catch (_) {}
     });
-  </script>
 
-  <script src="js/config.js" defer></script>
-  <script src="js/language.js" defer></script>
-  <script src="js/developer.js" defer></script>
-  <script src="js/core.js" defer></script>
-  <script src="js/ar.js" defer></script>
-  <script src="js/video.js" defer></script>
-  <script src="js/gps.js" defer></script>
-  <script src="js/preload.js" defer></script>
-  <script src="js/app.js" defer></script>
-  <script src="js/model-loading.js" defer></script>
-  <script src="js/continue-navigation-fix.js?v=2" defer></script>
+    storyVideo?.dispatchEvent(new Event("ended", { bubbles: true }));
+    videoBox?.classList.remove("locked");
+    storyDone?.classList.add("show");
+    storyDone?.removeAttribute("hidden");
+    arSection?.classList.remove("locked", "hidden");
+    launchAR?.removeAttribute("disabled");
+    nextButton?.removeAttribute("disabled");
+
+    const target = launchAR || arSection || nextButton;
+    target?.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  /* -----------------------------------------------------------
+     GS TEST MODE
+     Intentionally independent of the tour modelViewer.
+  ----------------------------------------------------------- */
+  const gsViewer = document.getElementById("gsTestViewer");
+  const gsButtons = Array.from(document.querySelectorAll(".gsTestBtn"));
+  const gsFilename = document.getElementById("gsTestFilename");
+  const gsLoadState = document.getElementById("gsTestLoadState");
+  const gsLaunchAR = document.getElementById("gsLaunchAR");
+  const gsResetCamera = document.getElementById("gsResetCamera");
+
+  function filenameFromPath(path) {
+    return String(path || "").split("/").pop() || "—";
+  }
+
+  function selectGsModel(button) {
+    if (!gsViewer || !button) return;
+
+    const src = button.dataset.gsModel;
+    if (!src) return;
+
+    gsButtons.forEach(btn => btn.classList.toggle("active", btn === button));
+    if (gsFilename) gsFilename.textContent = filenameFromPath(src);
+    if (gsLoadState) gsLoadState.textContent = "Loading…";
+
+    gsViewer.src = "";
+    requestAnimationFrame(() => {
+      gsViewer.src = src;
+    });
+  }
+
+  gsButtons.forEach(button => {
+    button.addEventListener("click", () => selectGsModel(button));
+  });
+
+  gsViewer?.addEventListener("load", () => {
+    if (gsLoadState) gsLoadState.textContent = "Ready ✓";
+  });
+
+  gsViewer?.addEventListener("error", (event) => {
+    console.error("GS test model failed to load:", event);
+    if (gsLoadState) gsLoadState.textContent = "Load error";
+  });
+
+  gsLaunchAR?.addEventListener("click", async () => {
+    if (!gsViewer) return;
+
+    if (typeof gsViewer.activateAR !== "function") {
+      if (gsLoadState) gsLoadState.textContent = "AR unavailable";
+      return;
+    }
+
+    try {
+      await gsViewer.activateAR();
+    } catch (error) {
+      console.error("Unable to launch GS test AR:", error);
+      if (gsLoadState) gsLoadState.textContent = "AR could not start";
+    }
+  });
+
+  gsResetCamera?.addEventListener("click", () => {
+    if (!gsViewer) return;
+    gsViewer.cameraOrbit = "auto auto auto";
+    gsViewer.cameraTarget = "auto auto auto";
+    gsViewer.fieldOfView = "auto";
+    if (typeof gsViewer.jumpCameraToGoal === "function") {
+      gsViewer.jumpCameraToGoal();
+    }
+  });
+});
+</script>
+
+<script src="js/config.js" defer></script>
+<script src="js/language.js" defer></script>
+<script src="js/developer.js" defer></script>
+<script src="js/core.js" defer></script>
+<script src="js/ar.js" defer></script>
+<script src="js/video.js" defer></script>
+<script src="js/gps.js" defer></script>
+<script src="js/preload.js" defer></script>
+<script src="js/app.js" defer></script>
+<script src="js/model-loading.js" defer></script>
+<script src="js/continue-navigation-fix.js?v=2" defer></script>
 </body>
 </html>
