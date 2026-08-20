@@ -9,6 +9,7 @@
         "it": "01_entrance_it_dubbed.mp4",
         "es": "01_entrance_es_dubbed.mp4",
         "hi": "01_entrance_hi_dubbed.mp4",
+        "pt": "01_entrance_pt_dubbed.mp4",
         "th": "01_entrance_th_dubbed.mp4",
         "zh": "01_entrance_zh_dubbed.mp4"
       }
@@ -21,6 +22,7 @@
         "it": "02_banquet_it_dubbed.mp4",
         "es": "02_banquet_es_dubbed.mp4",
         "hi": "02_banquet_hi_dubbed.mp4",
+        "pt": "02_banquet_pt_dubbed.mp4",
         "th": "02_banquet_th_dubbed.mp4",
         "zh": "02_banquet_zh_dubbed.mp4"
       }
@@ -32,21 +34,43 @@
         "fr": "03_palisade_fr_dubbed.mp4",
         "it": "03_palisade_it_dubbed.mp4",
         "es": "03_palisade_es_dubbed.mp4",
+        "hi": "03_palisade_hi_dubbed.mp4",
+        "pt": "03_palisade_pt_dubbed.mp4",
         "th": "03_palisade_th_dubbed.mp4",
         "zh": "03_palisade_zh_dubbed.mp4"
       }
     },
     "rath-of-the-synods": {
       "default": "04_rath.mp4",
-      "languages": {}
+      "languages": {
+        "de": "04rath_de_dubbed.mp4",
+        "fr": "04rath_fr_dubbed.mp4",
+        "it": "04rath_it_dubbed.mp4",
+        "es": "04rath_es_dubbed.mp4",
+        "th": "04rath_th_dubbed.mp4",
+        "zh": "04rath_zh_dubbed.mp4"
+      }
     },
     "mound-of-the-hostages": {
       "default": "05_mound.mp4",
-      "languages": {}
+      "languages": {
+        "fr": "05_mound_fr_dubbed.mp4",
+        "it": "05_mound_it_dubbed.mp4",
+        "es": "05_mound_es_dubbed.mp4",
+        "pt": "05_mound_pt_dubbed.mp4",
+        "th": "05_mound_th_dubbed.mp4",
+        "zh": "05_mound_zh_dubbed.mp4"
+      }
     },
     "stone-of-destiny": {
       "default": "06_stone.mp4",
-      "languages": {}
+      "languages": {
+        "fr": "06_stone_fr_dubbed.mp4",
+        "it": "06_stone_it_dubbed.mp4",
+        "es": "06_stone_es_dubbed.mp4",
+        "hi": "06_stone_hi_dubbed.mp4",
+        "zh": "06_stone_zh_dubbed.mp4"
+      }
     },
     "teach-cormaic": {
       "default": "07_cormaic.mp4",
@@ -54,7 +78,16 @@
     },
     "st-patrick": {
       "default": "08_patrick.mp4",
-      "languages": {}
+      "languages": {
+        "de": "08_patrick_de_dubbed.mp4",
+        "fr": "08_patrick_fr_dubbed.mp4",
+        "it": "08_patrick_it_dubbed.mp4",
+        "es": "08_patrick_es_dubbed.mp4",
+        "hi": "08_patrick_hi_dubbed.mp4",
+        "pt": "08_patrick_pt_dubbed.mp4",
+        "th": "08_patrick_th_dubbed.mp4",
+        "zh": "08_patrick_zh_dubbed.mp4"
+      }
     }
   }
 }
