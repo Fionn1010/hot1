@@ -3,10 +3,15 @@ function hideGate(){const gate=$('gateScreen');gate.classList.add('hide');setTim
 function showGateOptions(){const t=UI[currentLanguage]||UI.en;const translated=translatedStop(savedStop);if(savedStop>0&&savedStop<STOPS.length){$('resumeTour').style.display='block';$('resumeTour').textContent=`${t.resume}: ${translated.title}`;$('gateActions').classList.add('two')}else{$('resumeTour').style.display='none';$('gateActions').classList.remove('two')}}
 function chooseEntrance(){current=0;renderStop();hideGate()}function chooseResume(){current=savedStop;renderStop();hideGate()}
 async function chooseNearestStop(){const t=UI[currentLanguage]||UI.en;if(!navigator.geolocation){alert(t.gpsUnavailable);return}$('gateNote').textContent=t.checking;navigator.geolocation.getCurrentPosition(pos=>{userPos={lat:pos.coords.latitude,lng:pos.coords.longitude};let best=0,bestD=Infinity;STOPS.forEach((s,i)=>{const d=distance(userPos.lat,userPos.lng,s.lat,s.lng);if(d<bestD){bestD=d;best=i}});current=best;renderStop();hideGate();$('gpsBtn').textContent=t.gpsActive},err=>{$('gateNote').textContent=t.locationUnavailable},{enableHighAccuracy:true,maximumAge:2000,timeout:10000})}
-function videoPath(file){return`videos/${file}`}
-function modelPath(file){return`models/${file}`}
+const R2_BASE='https://pub-62956dc8ece640c59a779ae7fcd74275.r2.dev';
 
-const MEDIA_CONFIG_PATH='config/media.json';
+function videoPath(file){
+ return `${R2_BASE}/videos/${file}`;
+}
+
+function modelPath(file){
+ return `${R2_BASE}/models/${file}`;
+}const MEDIA_CONFIG_PATH='config/media.json';
 const MEDIA_STOP_KEYS=[
  'entrance',
  'banqueting-hall',
