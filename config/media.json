@@ -43,20 +43,24 @@
     "rath-of-the-synods": {
       "default": "04_rath.mp4",
       "languages": {
-        "de": "04rath_de_dubbed.mp4",
-        "fr": "04rath_fr_dubbed.mp4",
-        "it": "04rath_it_dubbed.mp4",
-        "es": "04rath_es_dubbed.mp4",
-        "th": "04rath_th_dubbed.mp4",
-        "zh": "04rath_zh_dubbed.mp4"
+        "de": "04_rath_de_dubbed.mp4",
+        "fr": "04_rath_fr_dubbed.mp4",
+        "it": "04_rath_it_dubbed.mp4",
+        "es": "04_rath_es_dubbed.mp4",
+        "hi": "04_rath_hi_dubbed.mp4",
+        "pt": "04_rath_pt_dubbed.mp4",
+        "th": "04_rath_th_dubbed.mp4",
+        "zh": "04_rath_zh_dubbed.mp4"
       }
     },
     "mound-of-the-hostages": {
       "default": "05_mound.mp4",
       "languages": {
+        "de": "05_mound_de_dubbed.mp4",
         "fr": "05_mound_fr_dubbed.mp4",
         "it": "05_mound_it_dubbed.mp4",
         "es": "05_mound_es_dubbed.mp4",
+        "hi": "05_mound_hi_dubbed.mp4",
         "pt": "05_mound_pt_dubbed.mp4",
         "th": "05_mound_th_dubbed.mp4",
         "zh": "05_mound_zh_dubbed.mp4"
@@ -65,10 +69,13 @@
     "stone-of-destiny": {
       "default": "06_stone.mp4",
       "languages": {
+        "de": "06_stone_de_dubbed.mp4",
         "fr": "06_stone_fr_dubbed.mp4",
         "it": "06_stone_it_dubbed.mp4",
         "es": "06_stone_es_dubbed.mp4",
         "hi": "06_stone_hi_dubbed.mp4",
+        "pt": "06_stone_pt_dubbed.mp4",
+        "th": "06_stone_th_dubbed.mp4",
         "zh": "06_stone_zh_dubbed.mp4"
       }
     },
@@ -97,6 +104,19 @@
         "th": "08_patrick_th_dubbed.mp4",
         "zh": "08_patrick_zh_dubbed.mp4"
       }
+    }
+  },
+  "farewell": {
+    "default": "Farewell.mp4",
+    "languages": {
+      "de": "Farewell_de_dubbed.mp4",
+      "fr": "Farewell_fr_dubbed.mp4",
+      "it": "Farewell_it_dubbed.mp4",
+      "es": "Farewell_es_dubbed.mp4",
+      "hi": "Farewell_hi_dubbed.mp4",
+      "pt": "Farewell_pt_dubbed.mp4",
+      "th": "Farewell_th_dubbed.mp4",
+      "zh": "Farewell_zh_dubbed.mp4"
     }
   }
 }
