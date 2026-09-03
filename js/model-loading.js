@@ -2,10 +2,11 @@
  * Fionn Engine — AR Model Loading Manager
  * Reusable across all heritage sites.
  *
- * Features:
+ * Version 1 static-model policy:
  * - Disables AR until the active model is fully loaded.
  * - Displays model-viewer progress in a large accessible panel.
- * - Warms the browser cache with the next stop's model only.
+ * - Preloads the next stop's model from the configured R2 model path only.
+ * - Revalidates model preloads instead of forcing stale browser cache.
  * - Reports current and next-model status in Developer Tools.
  */
 (() => {
@@ -50,6 +51,7 @@
 
     const bar = byId("modelLoadingBar");
     const track = byId("modelLoadingTrack");
+
     if (bar) bar.style.width = `${percent}%`;
     if (track) track.setAttribute("aria-valuenow", String(percent));
 
@@ -71,10 +73,12 @@
 
   function updateDeveloperStatus(status) {
     const badge = byId("devModelBadge");
+
     if (badge) {
       badge.textContent = status;
       badge.dataset.status = status.toLowerCase().replace(/\s+/g, "-");
     }
+
     setText("devModelReady", state.ready ? "Ready to launch" : "Not ready");
     setText("devNextModelStatus", state.nextStatus);
   }
@@ -107,12 +111,14 @@
 
   function markReady() {
     if (!state.activeSrc) return;
+
     state.ready = true;
     setProgress(100);
     setText("modelLoadingTitle", "Scene ready");
     setPanelState("ready", "The model is fully loaded. You can now enter AR.");
     setLaunchEnabled(true, "STEP INTO HISTORY");
     updateDeveloperStatus("Ready");
+
     preloadNextModel();
   }
 
@@ -141,6 +147,7 @@
 
   function syncCurrentSource() {
     const src = currentModelUrl();
+
     if (src === state.activeSrc) {
       const model = byId("modelViewer");
       if (src && model?.loaded && !state.ready) markReady();
@@ -162,7 +169,17 @@
     const next = window.STOPS[nextIndex];
 
     if (!next?.model) {
-      state.nextStatus = nextIndex >= window.STOPS.length ? "End of tour" : "No model";
+      state.nextStatus =
+        nextIndex >= window.STOPS.length ? "End of tour" : "No model";
+      updateDeveloperStatus(state.ready ? "Ready" : "Loading");
+      return;
+    }
+
+    // Version 1 uses Cloudflare R2 as the single source of truth for models.
+    // Do not silently fall back to a local GitHub /models directory.
+    if (typeof window.modelPath !== "function") {
+      console.error("Fionn model preload stopped: window.modelPath is unavailable.");
+      state.nextStatus = "R2 model path unavailable";
       updateDeveloperStatus(state.ready ? "Ready" : "Loading");
       return;
     }
@@ -170,11 +187,9 @@
     if (state.preloadController) state.preloadController.abort();
     state.preloadController = new AbortController();
 
-    const path = typeof window.modelPath === "function"
-      ? window.modelPath(next.model)
-      : `models/${next.model}`;
-
+    const path = window.modelPath(next.model);
     let url = path;
+
     try {
       const tier = window.FionnEngine?.quality?.selected || "standard";
       if (window.FionnEngine?.resolveTieredAsset) {
@@ -184,24 +199,33 @@
       console.warn("Fionn next-model tier resolution failed:", error);
     }
 
-    state.nextStatus = `Caching ${modelFileName(url)}…`;
+    state.nextStatus = `Loading ${modelFileName(url)}…`;
     updateDeveloperStatus(state.ready ? "Ready" : "Loading");
 
     try {
       const response = await fetch(url, {
         method: "GET",
-        cache: "force-cache",
+
+        // Revalidate the model rather than blindly preferring a stale browser copy.
+        // The service worker also uses network-first for .glb/.gltf files.
+        cache: "no-cache",
+
         signal: state.preloadController.signal
       });
-      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
-      // Read the body so the response is actually transferred into browser cache.
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+
+      // Consume the response so the complete model is transferred.
       await response.arrayBuffer();
+
       state.nextStatus = `Ready: ${modelFileName(url)}`;
     } catch (error) {
       if (error?.name === "AbortError") return;
+
       console.warn("Fionn next-model preload failed:", error);
-      state.nextStatus = `Could not cache ${modelFileName(url)}`;
+      state.nextStatus = `Could not preload ${modelFileName(url)}`;
     }
 
     updateDeveloperStatus(state.ready ? "Ready" : "Loading");
@@ -209,12 +233,17 @@
 
   function blockEarlyLaunch(event) {
     if (state.ready) return;
+
     event.preventDefault();
     event.stopImmediatePropagation();
 
     const panel = byId("modelLoadingPanel");
     panel?.scrollIntoView({ behavior: "smooth", block: "center" });
-    setPanelState("loading", "Please wait until the scene reaches 100% and shows “Scene ready”.");
+
+    setPanelState(
+      "loading",
+      "Please wait until the scene reaches 100% and shows “Scene ready”."
+    );
   }
 
   function initialise() {
@@ -240,12 +269,16 @@
 
     // Tour rendering may change the current stop without replacing the element.
     const originalRenderStop = window.renderStop;
-    if (typeof originalRenderStop === "function" && !originalRenderStop.__fionnLoadingWrapped) {
+    if (
+      typeof originalRenderStop === "function" &&
+      !originalRenderStop.__fionnLoadingWrapped
+    ) {
       const wrapped = function (...args) {
         const result = originalRenderStop.apply(this, args);
         queueMicrotask(syncCurrentSource);
         return result;
       };
+
       wrapped.__fionnLoadingWrapped = true;
       window.renderStop = wrapped;
     }
@@ -260,8 +293,12 @@
   }
 
   window.FionnModelLoading = {
-    get ready() { return state.ready; },
-    get progress() { return state.progress; },
+    get ready() {
+      return state.ready;
+    },
+    get progress() {
+      return state.progress;
+    },
     sync: syncCurrentSource,
     preloadNext: preloadNextModel
   };
