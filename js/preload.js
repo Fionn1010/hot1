@@ -61,8 +61,8 @@ const FIONN_PRELOAD={
   selected.forEach((index,position)=>{
    const stop=STOPS[index];
    const assets=[
-    selectedVideoFile(stop,index)?`videos/${selectedVideoFile(stop,index)}`:null,
-    stop.model?`models/${stop.model}`:null
+    selectedVideoFile(stop,index)?videoPath(selectedVideoFile(stop,index)):null,
+    stop.model?modelPath(stop.model):null
    ];
    (position<2?priority:remaining).push(...assets);
   });

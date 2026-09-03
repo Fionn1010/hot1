@@ -46,126 +46,6 @@ body.dev-mode .developerSkipVideo,
   display: block;
 }
 
-/* -------------------------------------------------------------
-   Gaussian / GS GLB test panel
-   Visible only in developer mode (?dev=1)
-------------------------------------------------------------- */
-.gsTestPanel {
-  display: none;
-  margin: 22px 0;
-  padding: 18px;
-  border: 2px solid #d6aa35;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #12261d 0%, #0c1712 100%);
-  color: #fff;
-  box-shadow: 0 12px 34px rgba(0,0,0,.28);
-}
-
-body.dev-mode .gsTestPanel {
-  display: block;
-}
-
-.gsTestEyebrow {
-  margin-bottom: 5px;
-  color: #e5c665;
-  font: 900 .72rem/1.2 Inter, sans-serif;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-
-.gsTestPanel h3 {
-  margin: 0 0 7px;
-  color: #fff4c6;
-  font-family: Cinzel, serif;
-  font-size: 1.35rem;
-}
-
-.gsTestPanel p {
-  margin: 0 0 14px;
-  line-height: 1.45;
-}
-
-.gsTestButtons {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 9px;
-  margin-bottom: 14px;
-}
-
-.gsTestBtn {
-  min-height: 52px;
-  padding: 10px 8px;
-  border: 1px solid #d6aa35;
-  border-radius: 13px;
-  background: #1a2f25;
-  color: #fff4c6;
-  font: 800 .92rem/1.2 Inter, sans-serif;
-  cursor: pointer;
-}
-
-.gsTestBtn.active {
-  background: #d6aa35;
-  color: #10251d;
-}
-
-#gsTestViewer {
-  display: block;
-  width: 100%;
-  height: min(62vh, 520px);
-  min-height: 360px;
-  border: 1px solid rgba(214,170,53,.65);
-  border-radius: 16px;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(255,255,255,.13), rgba(255,255,255,.02) 45%, rgba(0,0,0,.20) 100%),
-    #18231d;
-  overflow: hidden;
-}
-
-.gsTestStatus {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.07);
-  font: 700 .82rem/1.35 Inter, sans-serif;
-}
-
-.gsTestStatus strong {
-  color: #f0d578;
-}
-
-.gsTestActions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9px;
-  margin-top: 10px;
-}
-
-.gsTestAction {
-  min-height: 50px;
-  border: 1px solid #d6aa35;
-  border-radius: 13px;
-  background: #d6aa35;
-  color: #10251d;
-  font: 900 .9rem/1.2 Inter, sans-serif;
-  cursor: pointer;
-}
-
-.gsTestAction.secondary {
-  background: transparent;
-  color: #fff4c6;
-}
-
-.gsTestNote {
-  display: block;
-  margin-top: 10px;
-  color: #cbd5ce;
-  font: 600 .78rem/1.45 Inter, sans-serif;
-}
-
 @media (max-width: 600px) {
   body {
     padding-bottom: calc(280px + env(safe-area-inset-bottom));
@@ -175,15 +55,6 @@ body.dev-mode .gsTestPanel {
   .gate-card,
   .end-card {
     padding-bottom: calc(260px + env(safe-area-inset-bottom));
-  }
-
-  .gsTestButtons {
-    grid-template-columns: 1fr;
-  }
-
-  #gsTestViewer {
-    min-height: 330px;
-    height: 55vh;
   }
 }
 </style>
@@ -300,50 +171,6 @@ body.dev-mode .gsTestPanel {
         <p>Open any tour stop immediately, or launch its AR model without completing the earlier scenes.</p>
       </div>
       <span class="devBadge">DEV MODE</span>
-    </div>
-
-    <!-- NEW: Gaussian / GS GLB comparison tester -->
-    <div class="gsTestPanel" id="gsTestPanel">
-      <div class="gsTestEyebrow">NEW MODEL TEST</div>
-      <h3>Gaussian Splat / GS Test Models</h3>
-      <p>Compare the three new test files without changing the normal Hill of Tara tour.</p>
-
-      <div class="gsTestButtons">
-        <button class="gsTestBtn active" type="button" data-gs-model="models/GStest1.glb">GS TEST 1</button>
-        <button class="gsTestBtn" type="button" data-gs-model="models/GStest2.glb">GS TEST 2</button>
-        <button class="gsTestBtn" type="button" data-gs-model="models/GStest3.glb">GS TEST 3</button>
-      </div>
-
-      <model-viewer
-        id="gsTestViewer"
-        src="models/GStest1.glb"
-        camera-controls
-        touch-action="pan-y"
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        shadow-intensity="0.7"
-        exposure="1"
-        environment-image="neutral"
-        interaction-prompt="auto"
-        loading="eager"
-        reveal="auto"
-        crossorigin="anonymous"
-        alt="Hill of Tara Gaussian test model">
-      </model-viewer>
-
-      <div class="gsTestStatus" role="status" aria-live="polite">
-        <span>Loaded file: <strong id="gsTestFilename">GStest1.glb</strong></span>
-        <span id="gsTestLoadState">Loading…</span>
-      </div>
-
-      <div class="gsTestActions">
-        <button class="gsTestAction" type="button" id="gsLaunchAR">VIEW IN AR</button>
-        <button class="gsTestAction secondary" type="button" id="gsResetCamera">RESET VIEW</button>
-      </div>
-
-      <small class="gsTestNote">
-        These are isolated developer tests. Selecting one does not replace any of the eight normal tour models.
-      </small>
     </div>
 
     <div class="devLanguageTester">
@@ -545,75 +372,6 @@ document.addEventListener("DOMContentLoaded", () => {
     target?.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
-  /* -----------------------------------------------------------
-     GS TEST MODE
-     Intentionally independent of the tour modelViewer.
-  ----------------------------------------------------------- */
-  const gsViewer = document.getElementById("gsTestViewer");
-  const gsButtons = Array.from(document.querySelectorAll(".gsTestBtn"));
-  const gsFilename = document.getElementById("gsTestFilename");
-  const gsLoadState = document.getElementById("gsTestLoadState");
-  const gsLaunchAR = document.getElementById("gsLaunchAR");
-  const gsResetCamera = document.getElementById("gsResetCamera");
-
-  function filenameFromPath(path) {
-    return String(path || "").split("/").pop() || "—";
-  }
-
-  function selectGsModel(button) {
-    if (!gsViewer || !button) return;
-
-    const src = button.dataset.gsModel;
-    if (!src) return;
-
-    gsButtons.forEach(btn => btn.classList.toggle("active", btn === button));
-    if (gsFilename) gsFilename.textContent = filenameFromPath(src);
-    if (gsLoadState) gsLoadState.textContent = "Loading…";
-
-    gsViewer.src = "";
-    requestAnimationFrame(() => {
-      gsViewer.src = src;
-    });
-  }
-
-  gsButtons.forEach(button => {
-    button.addEventListener("click", () => selectGsModel(button));
-  });
-
-  gsViewer?.addEventListener("load", () => {
-    if (gsLoadState) gsLoadState.textContent = "Ready ✓";
-  });
-
-  gsViewer?.addEventListener("error", (event) => {
-    console.error("GS test model failed to load:", event);
-    if (gsLoadState) gsLoadState.textContent = "Load error";
-  });
-
-  gsLaunchAR?.addEventListener("click", async () => {
-    if (!gsViewer) return;
-
-    if (typeof gsViewer.activateAR !== "function") {
-      if (gsLoadState) gsLoadState.textContent = "AR unavailable";
-      return;
-    }
-
-    try {
-      await gsViewer.activateAR();
-    } catch (error) {
-      console.error("Unable to launch GS test AR:", error);
-      if (gsLoadState) gsLoadState.textContent = "AR could not start";
-    }
-  });
-
-  gsResetCamera?.addEventListener("click", () => {
-    if (!gsViewer) return;
-    gsViewer.cameraOrbit = "auto auto auto";
-    gsViewer.cameraTarget = "auto auto auto";
-    gsViewer.fieldOfView = "auto";
-    if (typeof gsViewer.jumpCameraToGoal === "function") {
-      gsViewer.jumpCameraToGoal();
-    }
-  });
 });
 </script>
 

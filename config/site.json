@@ -20,8 +20,8 @@
     "media": "config/media.json"
   },
   "assetFolders": {
-    "videos": "videos/",
-    "models": "models/",
+    "videos": "https://pub-62956dc8ece640c59a779ae7fcd74275.r2.dev/videos/",
+    "models": "https://pub-62956dc8ece640c59a779ae7fcd74275.r2.dev/models/",
     "images": "images/",
     "languages": "lang/"
   }
